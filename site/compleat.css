@@ -1,10 +1,24 @@
+/*
+Colour Scheme:
+** #00BFFF DEEPSKYBLUE 
+** #98FB98 PALEGREEN 
+** #FFFFFF WHITE 
+** #9ACD32 YELLOWGREEN 
+** #808080 GREY 
+*/
+
 * {
-  background: #708090;
-  color: #fff;
+  color: #FFFFFF;
   font-family: 'Roboto', sans-serif;
   font-weight: lighter;
   text-align: center;
   text-decoration: none;
+}
+
+body{
+  /*background: #FFFFFF;*/
+  /* Need to resize / use an SVG */
+  background-image: url(images/sample.png);
 }
 
 header{
@@ -15,8 +29,11 @@ header{
 }
 
 nav{
+  /* Want to keep text opaque */
+  opacity: 0.5;
+  background: #9ACD32;
   border-style: solid;
-  border-color: white;
+  border-color: #9ACD32;
   border-left-style: none;
   border-right-style: none;
   font-size: 20px;
@@ -27,16 +44,18 @@ nav{
 }
 
 nav a{
+  opacity: 1.0;
+  color: #FFFFFF;
   padding-left: 20px;
   padding-right: 20px;
 }
 
 a:hover {
-  color: #2F4F4F;
+  color: #808080;
 }
 
 a.current{
-   color: #2F4F4F;
+   color: #808080;
 }
 
 main{

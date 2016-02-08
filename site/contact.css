@@ -1,0 +1,30 @@
+* {
+  background: #708090;
+  color: #fff;
+  font-family: 'Helvetica Neue';
+  font-size: 30px;
+  font-weight: lighter;
+  text-align: center;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #2F4F4F;
+}
+
+.nav .container .contact {
+  color: #2F4F4F;
+}
+
+/* Navigation Strip */
+.nav a {
+  font-size: 20px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+li {
+  list-style-type: none;
+}

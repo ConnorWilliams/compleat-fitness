@@ -12,12 +12,12 @@ a:hover {
   color: #2F4F4F;
 }
 
-.nav .container .about {
+nav .container .about {
   color: #2F4F4F;
 }
 
 /* Navigation Strip */
-.nav a {
+nav a {
   font-size: 20px;
   padding-top: 14px;
   padding-bottom: 14px;

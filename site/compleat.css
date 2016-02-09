@@ -1,10 +1,10 @@
 /*
 Colour Scheme:
-** #00BFFF DEEPSKYBLUE 
-** #98FB98 PALEGREEN 
-** #FFFFFF WHITE 
-** #9ACD32 YELLOWGREEN 
-** #808080 GREY 
+** #00BFFF DEEPSKYBLUE
+** #98FB98 PALEGREEN
+** #FFFFFF WHITE
+** #9ACD32 YELLOWGREEN
+** #808080 GREY
 */
 
 * {
@@ -15,13 +15,21 @@ Colour Scheme:
   text-decoration: none;
 }
 
+html,body{
+    height:100%;
+    margin:0;
+    padding:0;
+    border:0;
+}
+
 body{
   /*background: #FFFFFF;*/
   /* Need to resize / use an SVG */
-  background-image: url(images/sample.png);
+  background-image: url(images/zinc-fitness-nutrition.png);
 }
 
 header{
+  background-color:rgba(0,0,0,0.5);
   height: 200px;
   display: flex;
   justify-content: center; /* align horizontal */
@@ -30,7 +38,7 @@ header{
 
 nav{
   /* Want to keep text opaque */
-  opacity: 0.5;
+  /*opacity: 0.5;*/
   background: #9ACD32;
   border-style: solid;
   border-color: #9ACD32;
@@ -59,7 +67,7 @@ a.current{
 }
 
 main{
-
+  height: 1000px; /* Only hard coded for now so we have scrolling room to show sticky anv bar. */
 }
 
 footer{

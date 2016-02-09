@@ -67,9 +67,11 @@ a.current{
 }
 
 main{
-  height: 1000px; /* Only hard coded for now so we have scrolling room to show sticky anv bar. */
+  height: 1500px; /* Only hard coded for now so we have scrolling room to show sticky anv bar. */
 }
 
 footer{
-
+  text-align: right;
+  padding: 10px;
+  background-color:rgba(0,0,0,0.5);
 }

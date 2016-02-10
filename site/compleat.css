@@ -26,6 +26,7 @@ body{
   /*background: #FFFFFF;*/
   /* Need to resize / use an SVG */
   background-image: url(images/zinc-fitness-nutrition.png);
+  background-size: cover;
 }
 
 header{

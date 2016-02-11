@@ -1,10 +1,10 @@
 /*
 Colour Scheme:
-** #00BFFF DEEPSKYBLUE
-** #98FB98 PALEGREEN
-** #FFFFFF WHITE
-** #9ACD32 YELLOWGREEN
-** #808080 GREY
+** #00BFFF 0,191,255   DEEPSKYBLUE
+** #98FB98 152,251,152 PALEGREEN
+** #FFFFFF 255,255,255 WHITE
+** #9ACD32 154,205,50  YELLOWGREEN
+** #808080 128,128,128 GREY
 */
 
 * {
@@ -23,14 +23,15 @@ html,body{
 }
 
 body{
-  /*background: #FFFFFF;*/
-  /* Need to resize / use an SVG */
-  background-image: url(images/zinc-fitness-nutrition.png);
+  /* use an SVG */
+/*  background-image: url(images/zinc-fitness-nutrition.png);]*/
+  background-image: url(images/egg-sandwich-4.png);]
+  background: no-repeat;
   background-size: cover;
 }
 
 header{
-  background-color:rgba(0,0,0,0.5);
+  background-color:rgba(128,128,128,0.5);
   height: 200px;
   display: flex;
   justify-content: center; /* align horizontal */
@@ -38,11 +39,8 @@ header{
 }
 
 nav{
-  /* Want to keep text opaque */
-  /*opacity: 0.5;*/
-  background: #9ACD32;
-  border-style: solid;
-  border-color: #9ACD32;
+  /*border-color: rgba(0,191,255,0.5);*/
+  background-color: rgba(128,128,128,0.5);
   border-left-style: none;
   border-right-style: none;
   font-size: 20px;
@@ -68,11 +66,20 @@ a.current{
 }
 
 main{
-  height: 1500px; /* Only hard coded for now so we have scrolling room to show sticky anv bar. */
+  display: block;
+  overflow: auto;
+  /*height: 1500px;*/ /* Only hard coded for now so we have scrolling room to show sticky anv bar. */
+}
+
+.wrapper{
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0; /*auto -2.5em*/;
 }
 
 footer{
   text-align: right;
   padding: 10px;
-  background-color:rgba(0,0,0,0.5);
+  background-color:rgba(128,128,128,0.5);
 }

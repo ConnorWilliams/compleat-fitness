@@ -25,6 +25,7 @@ var result = $('#result');
 
 // RENDER SELECTED UNIT
 calculate.on('click', function(){
+    window.alert("HI");
     var weight = document.getElementById('weight').value;
     var height = document.getElementById('height').value;
     var weightUnit = findUnit(document.getElementsByName('weightUnit'));
@@ -52,8 +53,3 @@ calculate.on('click', function(){
     
     result.text('Your BMI is: ' + w/(h*h));
 });
-
-
-
-
-

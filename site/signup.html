@@ -27,15 +27,41 @@
 
       <main>
         <h1>Login/Sign Up</h1>
-          <form>
-            <fieldset>
-              <legend>Sign Up</legend>
-              <input id="fullname" name="fullname" title="Full name" type="text" size="100" value="" placeholder="Full name"/><br/>
-              <input id="email" name="email" title="Email" type="text" size="100" value="" placeholder="Email"/><br/>
-              <input id="password" name="password" title="Password" type="text" size="100" value="" placeholder="Password"/><br/>
-              <input type="submit" value="Submit" />
-            </fieldset> 
-          </form>
+        <form>
+          <fieldset>
+            <legend>Sign Up</legend>
+            <input id="fullname" name="fullname" title="Full name" type="text" size="100" value="" placeholder="Full name"/><br/>
+            <input id="email" name="email" title="Email" type="text" size="100" value="" placeholder="Email"/><br/>
+            <input id="password" name="password" title="Password" type="text" size="100" value="" placeholder="Password"/><br/>
+            <input type="submit" value="Submit" />
+          </fieldset> 
+        </form>
+
+        <form>
+
+          <div>
+            <label for='g492-name' class='grunion-field-label name'>Name<span>(required)</span></label>
+            <input type='text' name='g492-name' id='g492-name' value='trimakeup' class='name'/>
+          </div>
+
+          <div>
+            <label for='g492-email' class='grunion-field-label email'>Email<span>(required)</span></label>
+            <input type='email' name='g492-email' id='g492-email' value='tri3makeup@gmail.com' class='email'/>
+          </div>
+
+          <div>
+            <label for='contact-form-comment-g492-message' class='grunion-field-label textarea'>Message<span>(required)</span></label>
+            <textarea name='g492-message' id='contact-form-comment-g492-message' rows='20'  required aria-required='true'></textarea>
+          </div>
+          
+          <p class='contact-submit'>
+            <input type='submit' value='Submit &#187;' class='pushbutton-wide'/>
+            <input type="hidden" id="_wpnonce" name="_wpnonce" value="b8097dc405" /><input type="hidden" name="_wp_http_referer" value="/contact-us/" />
+            <input type='hidden' name='contact-form-id' value='492' />
+            <input type='hidden' name='action' value='grunion-contact-form' />
+          </p>
+        
+        </form>
       </main>
     </div>
     

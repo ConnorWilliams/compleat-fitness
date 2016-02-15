@@ -1,5 +1,5 @@
 form {
-    max-width: 40%;
+    max-width: 50%;
     padding: 20px;
     background-color: rgba(128,128,128,0.5);
     margin: 10px auto;
@@ -7,7 +7,8 @@ form {
     border-radius: 10px;
 }
 
-form input,
+form input[type="text"],
+form input[type="email"],
 form textarea,
 form select {
     background: rgb(255,255,255);
@@ -26,6 +27,10 @@ form select {
 
 form textarea {
   text-align: left;
+}
+
+form input[type="checkbox"] {
+  margin-bottom: 10px;
 }
 
 form input:focus,

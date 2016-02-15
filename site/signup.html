@@ -27,18 +27,20 @@
       </nav>
 
       <main>
-        <h1>Login/Sign Up</h1>
-        <form>
+        <h1>Contact</h1>
+        <form action="MAILTO:connor_williams@msn.com" method="post" enctype="text/plain">
           <input type="text" name="firstname" placeholder="First name"/><br/>
           <input type="text" name="lastname" placeholder="Last name"/><br/>
           <input type="email" name="field2" placeholder="Email Address"/>
           <select name="gender" placeholder="Gender">
+            <option value="" disabled="" selected="" hidden="">Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="confidential">Prefer not to say</option>
             <option value="other">Other</option>
           </select>
-          <textarea name="message" rows="8" cols="50"></textarea><br/>
+          <textarea name="message" rows="8" cols="50" placeholder="Your message here"></textarea><br/>
+          <label><input type="checkbox" name="email" value="email"/> Tick if you would like to receive the odd email. You can unsubscribe at any point. </label>
           <input type="submit" value="Submit"/>
         </form>
       </main>

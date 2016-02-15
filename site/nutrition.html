@@ -6,14 +6,15 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'/>
     <meta charset="UTF-8"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script type="text/javascript" src="jq-sticky-anything.min.js"></script>
+    <script type="text/javascript" src="scripts/jq-sticky-anything.min.js"></script>
+    <script type="text/javascript" src="scripts/instafeed.js/instafeed.min.js"></script>
     <title>compleat fitness</title>
   </head>
 
   <body>
     <div class="wrapper">
       <header>
-        <a href="index.html#"> 
+        <a href="index.html#">
           <img src="images/title.png" alt="compleat fitness"/>
         </a>
       </header>
@@ -27,6 +28,9 @@
 
       <main>
         <h1>What should you eat?</h1>
+        <div id="instafeed">
+
+        </div>
       </main>
     </div>
 
@@ -36,6 +40,14 @@
 
     <script>
       $('nav').stickThis();
+
+      var feed = new Instafeed({
+          clientId: 'e0347429fc5548d48ddb0b92cbfbfcbb',
+          accessToken: '233584328.e034742.88db8c1704d14b11856e3382dba76ad9',
+          get: 'user',
+          userId: '233584328'
+      });
+    feed.run();
     </script>
   </body>
 </html>

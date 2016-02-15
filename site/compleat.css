@@ -31,8 +31,8 @@ body{
 }
 
 header{
+  padding: 20px;
   background-color:rgba(128,128,128,0.5);
-  height: 200px;
   display: flex;
   justify-content: center; /* align horizontal */
   align-items: center; /* align vertical */
@@ -68,7 +68,7 @@ a.current{
 main{
   display: block;
   overflow: auto;
-  /*height: 1500px;*/ /* Only hard coded for now so we have scrolling room to show sticky anv bar. */
+  height: 1500px; /* Only hard coded for now so we have scrolling room to show sticky anv bar. */
 }
 
 .wrapper{

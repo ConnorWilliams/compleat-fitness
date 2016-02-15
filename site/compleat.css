@@ -23,11 +23,10 @@ html,body{
 }
 
 body{
-  /* use an SVG */
-/*  background-image: url(images/zinc-fitness-nutrition.png);]*/
-  background-image: url(images/egg-sandwich-4.png);]
+  background-color: #00BFFF;
+  /*background-image: url(images/egg-sandwich-4.png);]
   background: no-repeat;
-  background-size: cover;
+  background-size: cover;*/
 }
 
 header{

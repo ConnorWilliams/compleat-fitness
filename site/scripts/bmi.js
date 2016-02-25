@@ -19,19 +19,22 @@ function findUnit(unit) {
     return output;
 }
 
+// window.onbeforeunload = function() {
+//   return "Are you sure you want to navigate away?";
+// }
+
 // Cache Event Elements
 var calculate = $('#calculate');
 var result = $('#result');
 
 // RENDER SELECTED UNIT
 calculate.on('click', function(){
-    window.alert("HI");
     var weight = document.getElementById('weight').value;
     var height = document.getElementById('height').value;
     var weightUnit = findUnit(document.getElementsByName('weightUnit'));
     var heightUnit = findUnit(document.getElementsByName('heightUnit'));
     var w;
-    //console.log('Weight is measured in: ' + weightUnit + '\nHeight is measured in: ' + heightUnit);
+    // console.log('Weight is measured in: ' + weightUnit + '\nHeight is measured in: ' + heightUnit);
     
     // If measurement is in pounds, do the math.
     if(weightUnit == 'lbs') {
@@ -51,5 +54,6 @@ calculate.on('click', function(){
         console.log(h + "m");     
     };
     
-    result.text('Your BMI is: ' + w/(h*h));
+    // result.update('Your BMI is: ' + w/(h*h));
+    result.innerHTML = 'Your BMI is';
 });

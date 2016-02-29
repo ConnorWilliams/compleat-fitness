@@ -31,17 +31,16 @@
       <main>
         <h1>Calculate your BMI</h1>
         <form>
-          <input type="text" id="weight" name="weight" placeholder="Weight"/><br/>
-          <input type="radio" name="weightUnit" checked="true" value="kg"/>kg
-          <input type="radio" name="weightUnit" value="lbs"/>lbs<br/><br/>
+          Weight:
+          <input id="weight" type="range" value="30.0" min="30" max="160" step="1"/>
+          <span id="weightrange">30.0</span> kg<br/><br/>
+          Height:
+          <input id="height" type="range" value="1.30" min="1.30" max="2.30" step="0.01"/>
+          <span id="heightrange">1.30</span> m<br/><br/>
 
-          <input type="text" id="height" name="height" placeholder="Height"/><br/>
-          <input type="radio" name="heightUnit" checked="true" value="m"/>m
-          <input type="radio" name="heightUnit" value="in"/>in<br/><br/>
+          <p id="result">Your BMI is:</p>
+          <p id="class"></p>
 
-          <input type="button" id="calculate" value="Calculate"/>
-
-          <p id="result"></p>
         </form>
 
       </main>
@@ -52,7 +51,8 @@
 
     <script>
       $('nav').stickThis();
-      document.getElementById("calculate").onclick = function(){calculate()};
+      document.getElementById("weight").onchange = function(){calculate()};
+      document.getElementById("height").onchange = function(){calculate()};
     </script>
   </body>
 </html>

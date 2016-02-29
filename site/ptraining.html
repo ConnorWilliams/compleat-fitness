@@ -33,15 +33,15 @@
         <form>
           <input type="text" id="weight" name="weight" placeholder="Weight"/><br/>
           <input type="radio" name="weightUnit" checked="true" value="kg"/>kg
-          <input type="radio" name="weightUnit" value="lbs"/>lbs<br/>
+          <input type="radio" name="weightUnit" value="lbs"/>lbs<br/><br/>
 
           <input type="text" id="height" name="height" placeholder="Height"/><br/>
           <input type="radio" name="heightUnit" checked="true" value="m"/>m
-          <input type="radio" name="heightUnit" value="in"/>in<br/>
+          <input type="radio" name="heightUnit" value="in"/>in<br/><br/>
 
-          <a href="#" id="calculate">Calculate</a>
+          <input type="button" id="calculate" value="Calculate"/>
 
-          <div id="result"></div>
+          <p id="result"></p>
         </form>
 
       </main>
@@ -52,6 +52,7 @@
 
     <script>
       $('nav').stickThis();
+      document.getElementById("calculate").onclick = function(){calculate()};
     </script>
   </body>
 </html>

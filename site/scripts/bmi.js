@@ -19,16 +19,9 @@ function findUnit(unit) {
     return output;
 }
 
-// window.onbeforeunload = function() {
-//   return "Are you sure you want to navigate away?";
-// }
-
 // Cache Event Elements
-var calculate = $('#calculate');
-var result = $('#result');
 
-// RENDER SELECTED UNIT
-calculate.on('click', function(){
+function calculate(){
     var weight = document.getElementById('weight').value;
     var height = document.getElementById('height').value;
     var weightUnit = findUnit(document.getElementsByName('weightUnit'));
@@ -52,8 +45,6 @@ calculate.on('click', function(){
     } else {
         h = height;
         console.log(h + "m");     
-    };
-    
-    // result.update('Your BMI is: ' + w/(h*h));
-    result.innerHTML = 'Your BMI is';
-});
+    };    
+    document.getElementById('result').innerHTML = 'Your BMI is: ' + Math.round(w/(h*h));
+}

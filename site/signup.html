@@ -1,57 +1,55 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
-  <head>
-    <link rel="icon" type="image/png" href="images/favicon.png"/>
-    <link href="compleat.css" rel="stylesheet" />
-    <link href="form.css" rel="stylesheet" />
-    <link href='https://fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'/>
-    <meta charset="UTF-8"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script type="text/javascript" src="scripts/jq-sticky-anything.min.js"></script>
-    <title>compleat fitness</title>
-  </head>
+    <head>
+        <link rel="icon" type="image/png" href="images/favicon.png"/>
+        <link href="compleat.css" rel="stylesheet" />
+        <link href="form.css" rel="stylesheet" />
+        <link href='https://fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'/>
+        <meta charset="UTF-8"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script type="text/javascript" src="scripts/jq-sticky-anything.min.js"></script>
+        <title>Compleat Fitness</title>
+    </head>
 
-  <body>
-    <div class="wrapper">
-      <header>
-        <a href="index.html#">
-          <img src="images/title.png" alt="compleat fitness"/>
-        </a>
-      </header>
+    <body>
+        <header>
+            <a href="index.html#">
+                <img src="images/title.png" alt="compleat fitness"/>
+            </a>
+        </header>
 
-      <nav>
-        <a href="index.html#">Home</a>
-        <a href="ptraining.html#">Personal Training</a>
-        <a href="nutrition.html#">Nutrition</a>
-        <a class="current" href="signup.html#">Login/Sign Up</a>
-      </nav>
+        <nav>
+            <a href="index.html#">Home</a>
+            <a href="ptraining.html#">Personal Training</a>
+            <a href="nutrition.html#">Nutrition</a>
+            <a class="current" href="signup.html#">Login/Sign Up</a>
+        </nav>
 
-      <main>
-        <h1>Contact</h1>
-        <form action="MAILTO:connor_williams@msn.com" method="post" enctype="text/plain">
-          <input type="text" name="firstname" placeholder="First name" title="firstname"/><br/>
-          <input type="text" name="lastname" placeholder="Last name" title="lastname"/><br/>
-          <input type="email" name="field2" placeholder="Email Address" title="email"/>
-          <select name="gender" title="gender">
-            <option value="" disabled="" selected="" hidden="">Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="confidential">Prefer not to say</option>
-            <option value="other">Other</option>
-          </select>
-          <textarea name="message" rows="8" cols="50" placeholder="Your message here" title="message"></textarea><br/>
-          <label><input type="checkbox" name="email" value="email"/> Tick if you would like to receive the odd email. You can unsubscribe at any point. </label>
-          <input type="submit" value="Submit"/>
-        </form>
-      </main>
-    </div>
+        <main>
+            <h1>Contact</h1>
+            <form action="MAILTO:connor_williams@msn.com" method="post" enctype="text/plain">
+                <input type="text" name="firstname" placeholder="First name" title="firstname"/><br/>
+                <input type="text" name="lastname" placeholder="Last name" title="lastname"/><br/>
+                <input type="email" name="field2" placeholder="Email Address" title="email"/>
+                <select name="gender" title="gender">
+                    <option value="" disabled="" selected="" hidden="">Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="confidential">Prefer not to say</option>
+                    <option value="other">Other</option>
+                </select>
+                <textarea name="message" rows="8" cols="50" placeholder="Your message here" title="message"></textarea><br/>
+                <label><input type="checkbox" name="email" value="email"/> Tick if you would like to receive the odd email. You can unsubscribe at any point. </label>
+                <input type="submit" value="Submit"/>
+            </form>
+        </main>
 
-    <footer>
-      Freddie Caira and Connor Williams
-    </footer>
+        <footer>
+            Freddie Caira and Connor Williams
+        </footer>
 
-    <script>
-      $('nav').stickThis();
-    </script>
-  </body>
+        <script>
+            $('nav').stickThis();
+        </script>
+    </body>
 </html>

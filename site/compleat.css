@@ -70,13 +70,6 @@ main{
   height: 1500px; /* Only hard coded for now so we have scrolling room to show sticky anv bar. */
 }
 
-.wrapper{
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0; /*auto -2.5em*/;
-}
-
 footer{
   text-align: right;
   padding: 10px;

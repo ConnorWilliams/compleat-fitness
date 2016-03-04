@@ -1,58 +1,54 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
-  <head>
-    <link rel="icon" type="image/png" href="images/favicon.png"/>
-    <link href="compleat.css" rel="stylesheet" />
-    <link href="form.css" rel="stylesheet" /> 
-    <link href='https://fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'/>
-    <meta charset="UTF-8"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script type="text/javascript" src="scripts/jq-sticky-anything.min.js"></script>
-    <script type="text/javascript" src="scripts/bmi.js"></script>
-    <title>compleat fitness</title>
+    <head>
+        <link rel="icon" type="image/png" href="images/favicon.png"/>
+        <link href="compleat.css" rel="stylesheet" />
+        <link href="form.css" rel="stylesheet" />
+        <link href='https://fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'/>
+        <meta charset="UTF-8"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script type="text/javascript" src="scripts/jq-sticky-anything.min.js"></script>
+        <script type="text/javascript" src="scripts/bmi.js"></script>
+        <title>Compleat Fitness</title>
+    </head>
 
-  </head>
+    <body>
+        <header>
+            <a href="index.html#">
+                <img src="images/title.png" alt="compleat fitness"/>
+            </a>
+        </header>
 
-  <body>
-    <div class="wrapper">
-      <header>
-        <a href="index.html#">
-          <img src="images/title.png" alt="compleat fitness"/>
-        </a>
-      </header>
+        <nav>
+            <a href="index.html#">Home</a>
+            <a class="current" href="ptraining.html#">Personal Training</a>
+            <a href="nutrition.html#">Nutrition</a>
+            <a href="signup.html#">Login/Sign Up</a>
+        </nav>
 
-      <nav>
-        <a href="index.html#">Home</a>
-        <a class="current" href="ptraining.html#">Personal Training</a>
-        <a href="nutrition.html#">Nutrition</a>
-        <a href="signup.html#">Login/Sign Up</a>
-      </nav>
+        <main>
+            <h1>Calculate your BMI</h1>
+            <form>
+                Weight:
+                <input id="weight" type="range" value="30.0" min="30" max="160" step="1"/>
+                <span id="weightrange">30.0</span> kg<br/><br/>
+                Height:
+                <input id="height" type="range" value="1.30" min="1.30" max="2.30" step="0.01"/>
+                <span id="heightrange">1.30</span> m<br/><br/>
 
-      <main>
-        <h1>Calculate your BMI</h1>
-        <form>
-          Weight:
-          <input id="weight" type="range" value="30.0" min="30" max="160" step="1"/>
-          <span id="weightrange">30.0</span> kg<br/><br/>
-          Height:
-          <input id="height" type="range" value="1.30" min="1.30" max="2.30" step="0.01"/>
-          <span id="heightrange">1.30</span> m<br/><br/>
+                <p id="result">Your BMI is:</p>
+                <p id="class"></p>
+            </form>
+        </main>
 
-          <p id="result">Your BMI is:</p>
-          <p id="class"></p>
+        <footer>
+            Freddie Caira and Connor Williams
+        </footer>
 
-        </form>
-
-      </main>
-    </div>
-    <footer>
-      Freddie Caira and Connor Williams
-    </footer>
-
-    <script>
-      $('nav').stickThis();
-      document.getElementById("weight").onchange = function(){calculate()};
-      document.getElementById("height").onchange = function(){calculate()};
-    </script>
-  </body>
+        <script>
+            $('nav').stickThis();
+            document.getElementById("weight").onchange = function(){calculate()};
+            document.getElementById("height").onchange = function(){calculate()};
+        </script>
+    </body>
 </html>

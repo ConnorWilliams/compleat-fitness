@@ -1,15 +1,14 @@
 /*
 Colour Scheme:
-** #00BFFF 0,191,255   DEEPSKYBLUE
-** #98FB98 152,251,152 PALEGREEN
-** #FFFFFF 255,255,255 WHITE
-** #9ACD32 154,205,50  YELLOWGREEN
-** #808080 128,128,128 GREY
+** #FFFFFF rgb(255, 255, 255)   White
+** #000000 rgb(0, 0, 0)         Black
+** #00cc66 rgb(0, 204, 102)     Turquiose
+** #404040 rgb(64, 64, 64)      Dark grey
 */
 
 * {
   color: #FFFFFF;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Muli', sans-serif;
   font-weight: normal;
   text-align: center;
   text-decoration: none;
@@ -28,7 +27,7 @@ html,body{
 }
 
 body{
-  background-color: #00BFFF;
+  background-color: #404040;
   background-image: url(images/blue-equipment-wallpaper_translucent.png);
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -38,25 +37,45 @@ body{
 
 header{
   padding: 20px;
-  background-color:rgba(128,128,128,0.5);
+  background-color:rgba(64, 64, 64,0.5);
   display: flex;
   justify-content: center; /* align horizontal */
   align-items: center; /* align vertical */
 }
 
-a:hover {
-  color: #808080;
-}
-
-a.current{
-   color: #808080;
-}
-
 main{
   display: block;
   overflow: auto;
+  padding: 20px;
   padding-bottom:100px; /* Height of the footer element */
-  height: 1500px;
+  width: 80%;
+  margin: auto;
+}
+
+h1 {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#gmap_canvas img {
+    max-width:none!important;
+    background:none!important;
+}
+
+.squat {
+    width: 35%;
+    min-width: 200px;
+    float: left;
+    margin-right: 20px;
+}
+
+p {
+    font-size: 25px;
+    text-align: left;
+}
+
+.contact_form {
+    float:right;
 }
 
 .instafeed {
@@ -69,5 +88,5 @@ footer{
     line-height: 30px;
     padding: 5px;
     text-align: right;
-    background-color:rgba(128,128,128,0.5);
+    background-color:rgba(64, 64, 64,0.5);
 }

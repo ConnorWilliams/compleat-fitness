@@ -5,14 +5,9 @@
         <link href="compleat.css" rel="stylesheet" />
         <link href="form.css" rel="stylesheet" />
         <link href="nav_bar.css" rel="stylesheet" />
-        <link href='https://fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'/>
-        <meta charset="UTF-8"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script type="text/javascript" src="scripts/jq-sticky-anything.min.js"></script>
         <script type="text/javascript" src="scripts/bmi.js"></script>
-
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
-
+        <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'/>
         <title>Compleat Fitness</title>
     </head>
 
@@ -76,13 +71,14 @@
         </header>
 
         <main>
-            <h1>Fitness</h1>
+            <h1>Fitness and Diet Plans</h1>
             <form>
+                <p> BMI Calculator </p>
                 Weight:
-                <input id="weight" type="range" value="30.0" min="30" max="160" step="1"/>
+                <input id="weight" type="range" value="70.0" min="30" max="160" step="1"/>
                 <span id="weightrange">30.0</span> kg<br/><br/>
                 Height:
-                <input id="height" type="range" value="1.30" min="1.30" max="2.30" step="0.01"/>
+                <input id="height" type="range" value="1.76" min="1.30" max="2.30" step="0.01"/>
                 <span id="heightrange">1.30</span> m<br/><br/>
 
                 <p id="result">Your BMI is:</p>
@@ -96,7 +92,7 @@
         </footer>
 
         <script>
-            $('nav').stickThis();
+            $( document ).ready( calculate() );
             document.getElementById("weight").onchange = function(){calculate()};
             document.getElementById("height").onchange = function(){calculate()};
         </script>

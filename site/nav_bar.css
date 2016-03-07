@@ -4,8 +4,8 @@
     position: fixed;
     left: 50px;
     top: 10px;
-    width: 650px;
-    height: 150px;
+    width: 100%;
+    height: 200px;
     box-sizing: border-box;
     font-size: 20px;
     padding-left: 20px;
@@ -13,14 +13,14 @@
 }
 
 .menu-item, .menu-open-button {
-  background: #808080;
+  background: #FFF;
   border-radius: 100%;
   width: 80px;
   height: 80px;
   margin-left: -40px;
   position: absolute;
   top: 20px;
-  color: white;
+  color: black;
   text-align: center;
   line-height: 80px;
   -webkit-transform: translate3d(0, 0, 0);
@@ -49,7 +49,7 @@ object {
 .hamburger {
   width: 25px;
   height: 3px;
-  background: #98FB98;
+  background: #000;
   display: block;
   position: absolute;
   top: 50%;
@@ -91,8 +91,7 @@ object {
 }
 
 .menu-item:hover {
-  background: #98FB98;
-  color: #ffc107;
+  background: #00cc66;
 }
 .menu-item:nth-child(3) {
   -webkit-transition-duration: 180ms;

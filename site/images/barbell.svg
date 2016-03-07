@@ -26,7 +26,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="148.92247"
+     inkscape:cx="29.279613"
      inkscape:cy="197.60311"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -48,7 +48,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -58,7 +58,7 @@
      id="layer1"
      transform="translate(-118.92857,-222.71934)">
     <circle
-       style="fill:#ffffff;fill-opacity:0;stroke:#ffffff;stroke-width:15;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:15;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4238"
        cx="242.14285"
        cy="345.93362"
@@ -66,14 +66,14 @@
     <g
        id="g4240"
        transform="translate(-89.999996,235)"
-       style="fill:#ffffff">
+       style="fill:#000000">
       <rect
          y="106.64792"
          x="229.28572"
          height="7.8571429"
          width="205.71428"
          id="rect4136"
-         style="fill:#ffffff;fill-opacity:1" />
+         style="fill:#000000;fill-opacity:1" />
       <rect
          ry="10.714286"
          y="63.005066"
@@ -81,7 +81,7 @@
          height="93.571419"
          width="17.142859"
          id="rect4138-0"
-         style="fill:#ffffff;fill-opacity:1" />
+         style="fill:#000000;fill-opacity:1" />
       <rect
          ry="9.4874592"
          y="69.433632"
@@ -89,7 +89,7 @@
          height="82.857132"
          width="14.285715"
          id="rect4138-0-1"
-         style="fill:#ffffff;fill-opacity:1" />
+         style="fill:#000000;fill-opacity:1" />
       <rect
          ry="8.0152674"
          y="75.505066"
@@ -97,7 +97,7 @@
          height="69.999992"
          width="11.428573"
          id="rect4138-0-1-2"
-         style="fill:#ffffff;fill-opacity:1" />
+         style="fill:#000000;fill-opacity:1" />
       <rect
          transform="scale(-1,1)"
          ry="10.714286"
@@ -106,7 +106,7 @@
          height="93.571419"
          width="18.686266"
          id="rect4138-0-3"
-         style="fill:#ffffff;fill-opacity:1" />
+         style="fill:#000000;fill-opacity:1" />
       <rect
          transform="scale(-1,1)"
          ry="9.4874592"
@@ -115,7 +115,7 @@
          height="82.857132"
          width="15.571888"
          id="rect4138-0-1-22"
-         style="fill:#ffffff;fill-opacity:1" />
+         style="fill:#000000;fill-opacity:1" />
       <rect
          transform="scale(-1,1)"
          ry="8.0152674"
@@ -124,7 +124,7 @@
          height="69.999992"
          width="12.457511"
          id="rect4138-0-1-2-0"
-         style="fill:#ffffff;fill-opacity:1" />
+         style="fill:#000000;fill-opacity:1" />
     </g>
   </g>
 </svg>

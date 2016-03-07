@@ -26,7 +26,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="87.85713"
+     inkscape:cx="-31.785727"
      inkscape:cy="236.78569"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -48,7 +48,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -58,14 +58,14 @@
      id="layer1"
      transform="translate(-118.92857,-222.71934)">
     <circle
-       style="fill:#ffffff;fill-opacity:0;stroke:#ffffff;stroke-width:15;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:15;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4238"
        cx="242.14285"
        cy="345.93362"
        r="115.71429" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:expanded;font-size:187.49998474px;line-height:125%;font-family:Pecita;-inkscape-font-specification:'Pecita Expanded';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:expanded;font-size:187.49998474px;line-height:125%;font-family:Pecita;-inkscape-font-specification:'Pecita Expanded';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
        x="246.38391"
        y="426.2908"
        id="text4670"
@@ -74,6 +74,6 @@
          id="tspan4672"
          x="246.38391"
          y="426.2908"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:expanded;font-size:249.99996948px;font-family:Pecita;-inkscape-font-specification:'Pecita Expanded';text-align:center;text-anchor:middle;fill:#ffffff;">?</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:expanded;font-size:249.99996948px;font-family:Pecita;-inkscape-font-specification:'Pecita Expanded';text-align:center;text-anchor:middle;fill:#000000;">?</tspan></text>
   </g>
 </svg>

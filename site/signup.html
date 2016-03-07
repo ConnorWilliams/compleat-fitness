@@ -5,13 +5,10 @@
         <link href="compleat.css" rel="stylesheet" />
         <link href="form.css" rel="stylesheet" />
         <link href="nav_bar.css" rel="stylesheet" />
-        <link href='https://fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'/>
-        <meta charset="UTF-8"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script type="text/javascript" src="scripts/jq-sticky-anything.min.js"></script>
-
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
-
+        <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
+        <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'/>
         <title>Compleat Fitness</title>
     </head>
 
@@ -45,27 +42,6 @@
                   Fitness
               </object>
           </a>
-
-          <!-- filters -->
-          <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-              <defs>
-                <filter id="shadowed-goo">
-
-                    <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-                    <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
-                    <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
-                    <feOffset in="shadow" dx="1" dy="1" result="shadow" />
-                    <feComposite in2="shadow" in="goo" result="goo" />
-                    <feComposite in2="goo" in="SourceGraphic" result="mix" />
-                </filter>
-                <filter id="goo">
-                    <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-                    <feComposite in2="goo" in="SourceGraphic" result="mix" />
-                </filter>
-              </defs>
-          </svg>
         </nav>
 
         <header>
@@ -76,7 +52,20 @@
 
         <main>
             <h1>Contact Us</h1>
-            <form action="MAILTO:connor_williams@msn.com" method="post" enctype="text/plain">
+            <div style="float: left; max-width: 30%;">
+                <p>
+                    If you want to get in touch, call the number below or use the
+                    form on this page. The form sends me an email so I will get
+                    back to you shortly!<br/><br/>
+                    Tel: 07123 456789 <br/><br/>
+                    Email: cw13121@bristol.ac.uk <br/><br/>
+                </p>
+
+                <div style='overflow:hidden;height:400px;width:500px;'>
+                    <div id='gmap_canvas' style='height:400px;width:500px;color:#000'></div>
+                </div>
+            </div>
+            <form class="contact_form" action="MAILTO:connor_williams@msn.com" method="post" enctype="text/plain">
                 <input type="text" name="firstname" placeholder="First name" title="firstname"/><br/>
                 <input type="text" name="lastname" placeholder="Last name" title="lastname"/><br/>
                 <input type="email" name="field2" placeholder="Email Address" title="email"/>
@@ -97,9 +86,46 @@
         <footer>
             Freddie Caira and Connor Williams
         </footer>
-
-        <script>
-            $('nav').stickThis();
-        </script>
     </body>
+
+    <script>
+        function init_map() {
+            var myOptions = {
+                zoom:16,
+                center:new google.maps.LatLng(51.457568, -2.592061),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+            marker = new google.maps.Marker({
+                map: map,
+                position: new google.maps.LatLng(51.457568, -2.592061)
+            });
+            google.maps.event.addListener(marker, 'click', function(){
+                infowindow.open(map,marker);
+            });
+            infowindow.open(map,marker);
+        }
+        google.maps.event.addDomListener(window, 'load', init_map);
+    </script>
+
+    <!-- filters -->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+          <filter id="shadowed-goo">
+
+              <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+              <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
+              <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
+              <feOffset in="shadow" dx="1" dy="1" result="shadow" />
+              <feComposite in2="shadow" in="goo" result="goo" />
+              <feComposite in2="goo" in="SourceGraphic" result="mix" />
+          </filter>
+          <filter id="goo">
+              <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+              <feComposite in2="goo" in="SourceGraphic" result="mix" />
+          </filter>
+        </defs>
+    </svg>
 </html>

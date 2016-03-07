@@ -56,6 +56,11 @@ main{
   height: 1500px;
 }
 
+.instafeed {
+    width: 150px;
+    margin: auto;
+}
+
 footer{
     height: 30px;
     line-height: 30px;

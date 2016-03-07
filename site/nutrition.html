@@ -8,9 +8,10 @@
         <meta charset="UTF-8"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script type="text/javascript" src="scripts/jq-sticky-anything.min.js"></script>
-        <script type="text/javascript" src="scripts/instafeed.js/instafeed.min.js"></script>
+        <script type="text/javascript" src="scripts/instafeed.js/instafeed.js"></script>
+        <script type="text/javascript" src="slick/slick/slick.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="slick/slick/slick.css"/>
 
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
 
         <title>Compleat Fitness</title>
     </head>
@@ -75,8 +76,8 @@
         </header>
 
         <main>
-            <h1>What should you eat?</h1>
-            <div id="instafeed"></div>
+            <h1>Nutrition</h1>
+            <div id="instafeed" class="instafeed"></div>
         </main>
     </div>
 
@@ -91,9 +92,22 @@
                 clientId: 'e0347429fc5548d48ddb0b92cbfbfcbb',
                 accessToken: '233584328.e034742.88db8c1704d14b11856e3382dba76ad9',
                 get: 'user',
-                userId: '233584328'
+                userId: '233584328',
+                after: function(){runSlick();},
             });
+
             feed.run();
+
+            function runSlick() {
+                $('.instafeed').slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 2000,
+                    fade: true,
+                    arrows: false,
+                    });
+            }
         </script>
     </body>
 </html>

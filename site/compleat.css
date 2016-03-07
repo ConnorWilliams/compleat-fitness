@@ -29,11 +29,12 @@ html,body{
 
 body{
   background-color: #00BFFF;
-  min-height:100%;
-  /*background-image: url(images/IMG_0673_nobg.png);
+  /*min-height:100%;*/
+  background-image: url(images/blue-equipment-wallpaper_translucent.png);
   background-repeat: no-repeat;
-  background-size: contain;*/
-  background-position: right;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: right bottom;
 }
 
 header{

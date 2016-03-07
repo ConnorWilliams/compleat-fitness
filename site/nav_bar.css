@@ -31,6 +31,17 @@
   transition: transform ease-out 200ms, -webkit-transform ease-out 200ms;
 }
 
+.menu_icon {
+    width: 50%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-65%);
+}
+
+object {
+    pointer-events: none;
+}
+
 .menu-open {
   display: none;
 }

@@ -6,12 +6,15 @@ Colour Scheme:
 ** #404040 rgb(64, 64, 64)      Dark grey
 */
 
+/*-------------------*/
+/*     ALL PAGES     */
+/*-------------------*/
 * {
   color: #FFFFFF;
   font-family: 'Muli', sans-serif;
   font-weight: normal;
-  text-align: center;
   text-decoration: none;
+  text-align: center;
 }
 
 html,body{
@@ -52,14 +55,44 @@ main{
   margin: auto;
 }
 
+footer{
+    height: 30px;
+    line-height: 30px;
+    padding: 5px;
+    text-align: right;
+    background-color:rgba(64, 64, 64,0.5);
+}
+
+.social_media_icons {
+    float: left;
+    width: 100%
+}
+
+.social_media{
+    /*pointer-events: none;*/
+    padding: 10px;
+    width: 60px;
+}
+
 h1 {
     font-weight: bold;
     text-decoration: underline;
 }
 
-#gmap_canvas img {
-    max-width:none!important;
-    background:none!important;
+p {
+    font-size: 25px;
+    text-align: left;
+}
+
+li {
+    text-align: left;
+}
+
+/*--------------------*/
+/*     INDEX PAGE     */
+/*--------------------*/
+.about {
+    width: 100%;
 }
 
 .squat {
@@ -69,24 +102,45 @@ h1 {
     margin-right: 20px;
 }
 
-p {
-    font-size: 25px;
-    text-align: left;
+.qual_skills {
+    width: 70%;
+    margin: auto;
 }
 
-.contact_form {
-    float:right;
+.qualifications {
+    width: 45%;
+    float: left;
 }
 
+.specialities {
+    width: 45%;
+    float: right;
+}
+
+
+/*---------------------*/
+/*     PTRAIN PAGE     */
+/*---------------------*/
+
+
+
+/*-------------------*/
+/*     NUTRITION     */
+/*-------------------*/
 .instafeed {
     width: 150px;
     margin: auto;
 }
 
-footer{
-    height: 30px;
-    line-height: 30px;
-    padding: 5px;
-    text-align: right;
-    background-color:rgba(64, 64, 64,0.5);
+
+/*-------------------*/
+/*     CONTACT     */
+/*-------------------*/
+.contact_form {
+    float:right;
+}
+
+#gmap_canvas img {
+    max-width:none!important;
+    background:none!important;
 }

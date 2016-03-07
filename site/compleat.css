@@ -22,11 +22,18 @@ html,body{
     border:0;
 }
 
+.wrapper {
+	min-height: 100%;
+	margin: 0 auto -40px; /* the bottom margin is the negative value of the footer's height */
+}
+
 body{
   background-color: #00BFFF;
-  /*background-image: url(images/egg-sandwich-4.png);]
-  background: no-repeat;
-  background-size: cover;*/
+  min-height:100%;
+  /*background-image: url(images/IMG_0673_nobg.png);
+  background-repeat: no-repeat;
+  background-size: contain;*/
+  background-position: right;
 }
 
 header{
@@ -35,25 +42,6 @@ header{
   display: flex;
   justify-content: center; /* align horizontal */
   align-items: center; /* align vertical */
-}
-
-nav{
-  /*border-color: rgba(0,191,255,0.5);*/
-  background-color: rgba(128,128,128,0.5);
-  border-left-style: none;
-  border-right-style: none;
-  font-size: 20px;
-  padding-top: 14px;
-  padding-bottom: 14px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-nav a{
-  opacity: 1.0;
-  color: #FFFFFF;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 a:hover {
@@ -67,11 +55,14 @@ a.current{
 main{
   display: block;
   overflow: auto;
-  height: 1500px; /* Only hard coded for now so we have scrolling room to show sticky anv bar. */
+  padding-bottom:100px; /* Height of the footer element */
+  height: 1500px;
 }
 
 footer{
-  text-align: right;
-  padding: 10px;
-  background-color:rgba(128,128,128,0.5);
+    height: 30px;
+    line-height: 30px;
+    padding: 5px;
+    text-align: right;
+    background-color:rgba(128,128,128,0.5);
 }

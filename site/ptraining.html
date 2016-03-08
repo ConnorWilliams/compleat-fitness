@@ -1,151 +1,145 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
-    <head>
-        <link rel="icon" type="image/png" href="images/favicon.png"/>
-        <link href="compleat.css" rel="stylesheet" />
-        <link href="form.css" rel="stylesheet" />
-        <link href="nav_bar.css" rel="stylesheet" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script type="text/javascript" src="scripts/bmi.js"></script>
-        <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'/>
-        <title>Compleat Fitness</title>
-    </head>
+<head>
+  <link rel="icon" type="image/png" href="images/favicon.png"/>
+  <link href="compleat.css" rel="stylesheet" />
+  <link href="form.css" rel="stylesheet" />
+  <link href="nav_bar.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script type="text/javascript" src="scripts/bmi.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'/>
+  <title>Compleat Fitness</title>
+</head>
 
-    <body>
-    <div class="wrapper">
-        <nav class="menu">
-          <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
-          <label class="menu-open-button" for="menu-open">
-            <span class="hamburger hamburger-1"></span>
-            <span class="hamburger hamburger-2"></span>
-            <span class="hamburger hamburger-3"></span>
-          </label>
+<body>
+  <div class="wrapper">
+    <nav class="menu">
+      <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
+      <label class="menu-open-button" for="menu-open">
+        <span class="hamburger hamburger-1"></span>
+        <span class="hamburger hamburger-2"></span>
+        <span class="hamburger hamburger-3"></span>
+      </label>
 
-          <a href="index.html#" class="menu-item">
-              <object data="images/home.svg" type="image/svg+xml" class="menu_icon">
-                  Fitness
-              </object>
-          </a>
-          <a href="ptraining.html#" class="menu-item">
-              <object data="images/barbell.svg" type="image/svg+xml" class="menu_icon">
-                  Fitness
-              </object>
-          </a>
-          <a href="nutrition.html#" class="menu-item">
-              <object data="images/cutlery.svg" type="image/svg+xml" class="menu_icon">
-                  Nutrition
-              </object>
-          </a>
-          <a href="signup.html#" class="menu-item">
-              <object data="images/forums.svg" type="image/svg+xml" class="menu_icon">
-                  Fitness
-              </object>
-          </a>
+      <a href="index.html#" class="menu-item">
+        <object data="images/home.svg" type="image/svg+xml" class="menu_icon">
+          Fitness
+        </object>
+      </a>
+      <a href="ptraining.html#" class="menu-item">
+        <object data="images/barbell.svg" type="image/svg+xml" class="menu_icon">
+          Fitness
+        </object>
+      </a>
+      <a href="nutrition.html#" class="menu-item">
+        <object data="images/cutlery.svg" type="image/svg+xml" class="menu_icon">
+          Nutrition
+        </object>
+      </a>
+      <a href="signup.html#" class="menu-item">
+        <object data="images/forums.svg" type="image/svg+xml" class="menu_icon">
+          Fitness
+        </object>
+      </a>
 
-          <!-- filters -->
-          <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-              <defs>
-                <filter id="shadowed-goo">
-                    <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-                    <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
-                    <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
-                    <feOffset in="shadow" dx="1" dy="1" result="shadow" />
-                    <feComposite in2="shadow" in="goo" result="goo" />
-                    <feComposite in2="goo" in="SourceGraphic" result="mix" />
-                </filter>
+      <!-- filters -->
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+          <filter id="shadowed-goo">
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+            <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
+            <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
+            <feOffset in="shadow" dx="1" dy="1" result="shadow" />
+            <feComposite in2="shadow" in="goo" result="goo" />
+            <feComposite in2="goo" in="SourceGraphic" result="mix" />
+          </filter>
 
-                <filter id="goo">
-                    <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-                    <feComposite in2="goo" in="SourceGraphic" result="mix" />
-                </filter>
-              </defs>
-          </svg>
-        </nav>
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+            <feComposite in2="goo" in="SourceGraphic" result="mix" />
+          </filter>
+        </defs>
+      </svg>
+    </nav>
 
-        <header>
-            <a href="index.html#">
-                <img src="images/title.png" alt="compleat fitness"/>
-            </a>
-        </header>
+    <header>
+      <a href="index.html#">
+        <img src="images/title.png" alt="compleat fitness"/>
+      </a>
+    </header>
 
-        <main>
-            <h1>Fitness and Diet Plans</h1>
-            <div class="packages">
-                <div class="bronze">
-                <p>
-                    Bronze package <br/>
-                    (4 week programme): <br/>
-                    8 Sessions - £260 (£32.50/session) <br/>
-                    Includes health and fitness consultation, diet analysis,
-                    personalised goal setting and 24 hour text and email support throughout!
-                </p>
-                </div>
-                <div class="silver">
-                <p>
-                    Silver package <br/>
-                    (6 week programme): <br/>
-                    10 Sessions - £300 (£30/session) <br/>
-                    Includes health and fitness consultation, diet analysis,
-                    personalised goal setting and 24 hour text and email support throughout!
-                </p>
-                </div>
-                <div class="gold">
-                <p>
-                    Gold package <br/>
-                    (8 week programme): <br/>
-                    12 Sessions - £340 (£28.35/session) <br/>
-                    Includes health and fitness consultation, diet analysis,
-                    personalised goal setting and 24 hour text and email support throughout!
-                </p>
-                </div>
-            </div>
+    <main>
+      <h1>Fitness and Diet Plans</h1> 
+      <p>All include health and fitness consultation, diet analysis, personalised goal setting and 24 hour text and email support throughout!</p>
+      <div class="packages">
+        <div class="bronze">
+          <p>
+            <h2>Bronze package</h2>
+            (4 week programme): <br/>
+            8 Sessions - £260 (£32.50/session) <br/>
+          </p>
+        </div>
+        <div class="silver">
+          <p>
+            <h2>Silver package</h2>
+            (6 week programme): <br/>
+            10 Sessions - £300 (£30/session) <br/>
+          </p>
+        </div>
+        <div class="gold">
+          <p>
+            <h2>Gold package</h2>
+            (8 week programme): <br/>
+            12 Sessions - £340 (£28.35/session) <br/>
+          </p>
+        </div>
+      </div>
 
-            <ul>
-                <li>What will a session include?</li>
-                <li>What is fitness consultation?</li>
-                <li>What does diet analysis involve?</li>
-            </ul>
+      <h1>F.A.Q.s</h1>
+      <p><ul>
+        <li>What will a session include?</li>
+        <li>What is fitness consultation?</li>
+        <li>What does diet analysis involve?</li>
+      </ul></p><br/>
 
-            <form>
-                <p> BMI Calculator </p>
-                Weight:
-                <input id="weight" type="range" value="70.0" min="30" max="160" step="1"/>
-                <span id="weightrange">30.0</span> kg<br/><br/>
-                Height:
-                <input id="height" type="range" value="1.76" min="1.30" max="2.30" step="0.01"/>
-                <span id="heightrange">1.30</span> m<br/><br/>
+      <h1>BMI Calculator</h1> 
+      <form class="bmi">
+        <p>Discover whether you are a healthy weight:</p>
+        Weight:
+        <input id="weight" type="range" value="70.0" min="30" max="160" step="1"/>
+        <span id="weightrange">30.0</span> kg<br/><br/>
+        Height:
+        <input id="height" type="range" value="1.76" min="1.30" max="2.30" step="0.01"/>
+        <span id="heightrange">1.30</span> m<br/><br/>
 
-                <p id="result">Your BMI is:</p>
-                <p id="class"></p>
-            </form>
+        <p id="result">Your BMI is:</p>
+        <p id="class"></p>
+      </form>
 
-            <div class="social_media_icons">
-                <a href="http://www.facebook.com/compleatfitness.jen" class="social_media">
-                    <object data="images/facebook.svg" type="image/svg+xml" class="social_media">
-                        Facebook
-                    </object>
-                </a>
-                <a href="http://www.instagram.com/compleatfitness" class="social_media">
-                    <object data="images/instagram.svg" type="image/svg+xml" class="social_media">
-                        Instagram
-                    </object>
-                </a>
-            </div>
+    </main>
+  </div>
 
-        </main>
-    </div>
+  <div class="social_media_icons">
+    <a href="http://www.facebook.com/compleatfitness.jen" target="_blank">
+      <img title="Facebook" src="images/facebook.svg" alt="Facebook" class="social_media"/>
+    </a>
+    <a href="http://www.instagram.com/compleatfitness" target="_blank">
+      <img title="Instagram" src="images/instagram.svg" alt="Instagram" class="social_media"/>
+    </a> 
+  </div>
 
-        <footer>
-            Freddie Caira and Connor Williams
-        </footer>
 
-        <script>
-            $( document ).ready( calculate() );
-            document.getElementById("weight").onchange = function(){calculate()};
-            document.getElementById("height").onchange = function(){calculate()};
-        </script>
+  <footer>
+    <a href="mailto:fc13269@bristol.ac.uk">Freddie Caira</a> and <a href="mailto:cw13121@bristol.ac.uk">Connor Williams</a>
+  </footer>
 
-    </body>
+  <script>
+  $( document ).ready( calculate() );
+  document.getElementById("weight").onchange = function(){calculate()};
+  document.getElementById("height").onchange = function(){calculate()};
+  </script>
+
+</body>
 </html>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
 <head>
+  <meta charset="UTF-8"/>
   <link rel="icon" type="image/png" href="images/favicon.png"/>
   <link href="compleat.css" rel="stylesheet" />
   <link href="form.css" rel="stylesheet" />
@@ -14,8 +15,8 @@
 <body>
   <div class="wrapper">
     <nav class="menu">
-      <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
-      <label class="menu-open-button" for="menu-open">
+      <input type="checkbox" class="menu-open" name="menu-open" id="menu-open"/>
+      <label for="menu-open" class="menu-open-button">
         <span class="hamburger hamburger-1"></span>
         <span class="hamburger hamburger-2"></span>
         <span class="hamburger hamburger-3"></span>
@@ -75,22 +76,22 @@
       <p>All include health and fitness consultation, diet analysis, personalised goal setting and 24 hour text and email support throughout!</p>
       <div class="packages">
         <div class="bronze">
+          <h2>Bronze package</h2>
           <p>
-            <h2>Bronze package</h2>
             (4 week programme): <br/>
             8 Sessions - £260 (£32.50/session) <br/>
           </p>
         </div>
         <div class="silver">
+          <h2>Silver package</h2>
           <p>
-            <h2>Silver package</h2>
             (6 week programme): <br/>
             10 Sessions - £300 (£30/session) <br/>
           </p>
         </div>
         <div class="gold">
+          <h2>Gold package</h2>
           <p>
-            <h2>Gold package</h2>
             (8 week programme): <br/>
             12 Sessions - £340 (£28.35/session) <br/>
           </p>
@@ -98,25 +99,25 @@
       </div>
 
       <h1>F.A.Q.s</h1>
-      <p><ul>
+      <ul>
         <li>What will a session include?</li>
         <li>What is fitness consultation?</li>
         <li>What does diet analysis involve?</li>
-      </ul></p><br/>
+      </ul><br/>
 
       <h1>BMI Calculator</h1> 
-      <form class="bmi">
+      <div class="bmi">
         <p>Discover whether you are a healthy weight:</p>
-        Weight:
+        <label for="weight">Weight:</label>
         <input id="weight" type="range" value="70.0" min="30" max="160" step="1"/>
         <span id="weightrange">30.0</span> kg<br/><br/>
-        Height:
+        <label for="height">Height:</label>
         <input id="height" type="range" value="1.76" min="1.30" max="2.30" step="0.01"/>
         <span id="heightrange">1.30</span> m<br/><br/>
 
         <p id="result">Your BMI is:</p>
         <p id="class"></p>
-      </form>
+      </div>
 
     </main>
   </div>

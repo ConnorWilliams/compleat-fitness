@@ -17,15 +17,13 @@ Colour Scheme:
   font-family: 'Quicksand', sans-serif;
   font-weight: lighter;
   text-decoration: none;
-  line-height: 150%;
-  text-align: justify;
 }
 
 html,body{
-    height:100%;
-    margin:0;
-    padding:0;
-    border:0;
+  height:100%;
+  margin:0;
+  padding:0;
+  border:0;
 }
 
 .wrapper {
@@ -58,6 +56,7 @@ main{
   padding-bottom:100px; /* Height of the footer element */
   width: 80%;
   margin: auto;
+  text-align: justify;
 }
 
 footer{
@@ -69,7 +68,6 @@ footer{
 }
 
 .social_media_icons {
-  float: left;
   text-align: center;
   width: 100%
 }
@@ -81,11 +79,13 @@ footer{
 }
 
 h1 {
+  text-align: left
   font-size: 40px;
 }
 
 p {
   font-size: 20px;
+  line-height: 150%;
 }
 
 li {
@@ -96,39 +96,39 @@ li {
 /*     INDEX PAGE     */
 /*--------------------*/
 .about {
-    width: 100%;
-    text-align: justify;
+  width: 100%;
 }
 
 .squat {
-    width: 35%;
-    min-width: 200px;
-    float: left;
-    margin-right: 20px;
-    border-radius: 10px;
+  width: 35%;
+  min-width: 200px;
+  float: left;
+  margin-right: 20px;
+  border-radius: 10px;
+  text-align: justify;
 }
 
 .qual_skills {
-    width: 70%;
-    margin: auto;
+  width: 100%;
+  margin: auto;
 }
 
 .qualifications {
-    width: 45%;
-    float: left;
-    margin: 5px;
-    border-radius: 10px;
-    padding: 20px;
-    background-color: rgba(128,128,128,0.5);
+  width: 45%;
+  float: left;
+  display: inline-block;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: rgba(128,128,128,0.5);
 }
 
 .specialities {
-    width: 45%;
-    float: right;
-    margin: 5px;  
-    border-radius: 10px;
-    padding: 20px;
-    background-color: rgba(128,128,128,0.5);
+  width: 45%;
+  float: right;  
+  display: inline-block;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: rgba(128,128,128,0.5);
 }
 
 
@@ -136,55 +136,85 @@ li {
 /*     PTRAIN PAGE     */
 /*---------------------*/
 .packages {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin: auto;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: auto;
 }
 
 .gold {
-    width: auto;;
-    height: auto;
-    margin: 5px;
-    border-radius: 10px;
-    padding: 20px;
-    background-color: rgba(218, 165, 32, 0.5);
+  width: auto;;
+  height: auto;
+  margin: 5px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(218, 165, 32, 0.5);
+  text-align: left;
 }
 
 .silver {
-    width: auto;
-    height: auto;
-    margin: 5px;
-    border-radius: 10px;
-    padding: 20px;
-    background-color: rgba(192, 192, 192, 0.5);
+  width: auto;
+  height: auto;
+  margin: 5px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(192, 192, 192, 0.5);
+  text-align: left;
 }
 
 .bronze {
-    width: auto;
-    height: auto;
-    margin: 5px;
-    border-radius: 10px;
-    padding: 20px;
-    background-color: rgba(205, 127, 50, 0.5);
+  width: auto;
+  height: auto;
+  margin: 5px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(205, 127, 50, 0.5);
+  text-align: left;
+}
+
+.bmi {
+  float: left;
 }
 
 /*-------------------*/
 /*     NUTRITION     */
 /*-------------------*/
+
 .instafeed {
-    width: 150px;
-    margin: auto;
+  width: 150px;
+  margin: auto;
 }
 
 /*-------------------*/
 /*     CONTACT     */
 /*-------------------*/
+
+.contact_info {
+  float: left; 
+  /*max-width: 30%;*/
+}
+
+.gmaps {
+  width: 45%;
+  float: right;
+  overflow: hidden;
+  height: auto;
+  /*height: 400px;*/
+  /*width: 500px;'*/
+}
+  
+.gmap_canvas {
+  height: 400px;
+  width: 500px;
+  color: #000
+} 
+
 .contact_form {
-    float:right;
+  width: 45%;
+  float: left;
 }
 
 #gmap_canvas img {
-    max-width:none!important;
-    background:none!important;
+  max-width:none!important;
+  background:none!important;
 }

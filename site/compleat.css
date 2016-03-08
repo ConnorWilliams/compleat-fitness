@@ -4,7 +4,7 @@ Colour Scheme:
 ** #000000 rgb(0, 0, 0)         Black
 ** #00cc66 rgb(0, 204, 102)     Turquiose
 ** #404040 rgb(64, 64, 64)      Dark grey
-** #ffd700 rgb(255, 215, 0)     Gold
+** #ffd700 rgb(218, 165, 32)     Gold
 ** #c0c0c0 rgb(192, 192, 192)   Silver
 ** #CD7F32 rgb(205, 127, 50)    Bronze
 */
@@ -14,10 +14,11 @@ Colour Scheme:
 /*-------------------*/
 * {
   color: #FFFFFF;
-  font-family: 'Muli', sans-serif;
-  font-weight: normal;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: lighter;
   text-decoration: none;
-  text-align: center;
+  line-height: 150%;
+  text-align: justify;
 }
 
 html,body{
@@ -33,8 +34,8 @@ html,body{
 }
 
 body{
-  background-color: #FFF;
-  /*background-image: url(images/blue-equipment-wallpaper_translucent.png);*/
+  background-color: #404040;
+  background-image: url(images/fitness_10.png); 
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -43,6 +44,7 @@ body{
 
 header{
   padding: 20px;
+  background-color:rgba(64, 64, 64);
   background-color:rgba(64, 64, 64,0.5);
   display: flex;
   justify-content: center; /* align horizontal */
@@ -59,36 +61,35 @@ main{
 }
 
 footer{
-    height: 30px;
-    line-height: 30px;
-    padding: 5px;
-    text-align: right;
-    background-color:rgba(64, 64, 64,0.5);
+  height: 30px;
+  line-height: 30px;
+  padding: 5px;
+  text-align: right;
+  background-color:rgba(64, 64, 64,0.5);
 }
 
 .social_media_icons {
-    float: left;
-    width: 100%
+  float: left;
+  text-align: center;
+  width: 100%
 }
 
 .social_media{
-    /*pointer-events: none;*/
-    padding: 10px;
-    width: 60px;
+  /*pointer-events: none;*/
+  padding: 10px;
+  width: 60px;
 }
 
 h1 {
-    font-weight: bold;
-    text-decoration: underline;
+  font-size: 40px;
 }
 
 p {
-    font-size: 25px;
-    text-align: left;
+  font-size: 20px;
 }
 
 li {
-    text-align: left;
+  text-align: left;
 }
 
 /*--------------------*/
@@ -96,6 +97,7 @@ li {
 /*--------------------*/
 .about {
     width: 100%;
+    text-align: justify;
 }
 
 .squat {
@@ -103,6 +105,7 @@ li {
     min-width: 200px;
     float: left;
     margin-right: 20px;
+    border-radius: 10px;
 }
 
 .qual_skills {
@@ -113,11 +116,19 @@ li {
 .qualifications {
     width: 45%;
     float: left;
+    margin: 5px;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: rgba(128,128,128,0.5);
 }
 
 .specialities {
     width: 45%;
     float: right;
+    margin: 5px;  
+    border-radius: 10px;
+    padding: 20px;
+    background-color: rgba(128,128,128,0.5);
 }
 
 
@@ -135,30 +146,28 @@ li {
     width: auto;;
     height: auto;
     margin: 5px;
-    border-radius: 10%;
+    border-radius: 10px;
     padding: 20px;
-    background-color: gold;
+    background-color: rgba(218, 165, 32, 0.5);
 }
 
 .silver {
     width: auto;
     height: auto;
     margin: 5px;
-    border-radius: 10%;
+    border-radius: 10px;
     padding: 20px;
-    background-color: silver;
+    background-color: rgba(192, 192, 192, 0.5);
 }
 
 .bronze {
     width: auto;
     height: auto;
     margin: 5px;
-    border-radius: 10%;
+    border-radius: 10px;
     padding: 20px;
-    background-color: #CD7F32;
+    background-color: rgba(205, 127, 50, 0.5);
 }
-
-
 
 /*-------------------*/
 /*     NUTRITION     */
@@ -167,7 +176,6 @@ li {
     width: 150px;
     margin: auto;
 }
-
 
 /*-------------------*/
 /*     CONTACT     */

@@ -26,8 +26,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="-31.785727"
-     inkscape:cy="236.78569"
+     inkscape:cx="128.49087"
+     inkscape:cy="139.83266"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -63,17 +63,10 @@
        cx="242.14285"
        cy="345.93362"
        r="115.71429" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:expanded;font-size:187.49998474px;line-height:125%;font-family:Pecita;-inkscape-font-specification:'Pecita Expanded';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
-       x="246.38391"
-       y="426.2908"
-       id="text4670"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan4672"
-         x="246.38391"
-         y="426.2908"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:expanded;font-size:249.99996948px;font-family:Pecita;-inkscape-font-specification:'Pecita Expanded';text-align:center;text-anchor:middle;fill:#000000;">?</tspan></text>
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:15;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 166.62779,296.95957 c -5.05664,0 -9.12695,4.07032 -9.12695,9.12696 l 0,5.98437 84.33398,27.38867 82.80859,-26.89453 0,-6.47851 c 0,-5.05664 -4.07226,-9.12696 -9.1289,-9.12696 l -148.88672,0 z m -9.12695,21.08008 0,66.93555 c 0,5.05664 4.07031,9.12695 9.12695,9.12695 l 148.88672,0 c 5.05664,0 9.1289,-4.07031 9.1289,-9.12695 l 0,-66.43945 -82.15429,26.68359 c -0.0727,0.0236 -0.1474,0.0229 -0.22071,0.0117 -0.127,0.15359 -0.34089,0.2291 -0.53515,0.16601 l -84.23242,-27.35742 z"
+       id="rect4187"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>

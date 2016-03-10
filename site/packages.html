@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
 <head>
-  <meta charset="UTF-8"/>
-  <link rel="icon" type="image/png" href="images/favicon.png"/>
-  <link href="compleat.css" rel="stylesheet" />
-  <link href="form.css" rel="stylesheet" />
-  <link href="nav_bar.css" rel="stylesheet" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script type="text/javascript" src="scripts/bmi.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'/>
-  <title>Compleat Fitness</title>
+    <link rel="icon" type="image/png" href="images/favicon.png"/>
+    <link href="compleat.css" rel="stylesheet" />
+    <link href="nav_bar.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'/>
+
+    <link href="form.css" rel="stylesheet" />
+    <script type="text/javascript" src="scripts/packages.js"></script>
+
+    <title>Compleat Fitness</title>
 </head>
 
 <body>
     <div class="wrapper">
         <nav class="menu">
             <input type="checkbox" class="menu-open" name="menu-open" id="menu-open"/>
-            <label for="menu-open" class="menu-open-button">.
+            <label class="menu-open-button" for="menu-open">.
                 <span class="hamburger hamburger-1"></span>
                 <span class="hamburger hamburger-2"></span>
                 <span class="hamburger hamburger-3"></span>
@@ -27,17 +28,17 @@
                     Home
                 </object>
             </a>
-            <a href="ptraining.html#" class="menu-item">
+            <a href="packages.html#" class="menu-item">
                 <object data="images/barbell.svg" type="image/svg+xml" class="menu_icon">
-                    Fitness
+                    Fitness Plans
                 </object>
             </a>
             <a href="nutrition.html#" class="menu-item">
                 <object data="images/cutlery.svg" type="image/svg+xml" class="menu_icon">
-                    Nutrition
+                    Healthy Recipes
                 </object>
             </a>
-            <a href="signup.html#" class="menu-item">
+            <a href="contact.html#" class="menu-item">
                 <object data="images/forums.svg" type="image/svg+xml" class="menu_icon">
                     Contact
                 </object>
@@ -153,34 +154,10 @@
     </footer>
 
     <script>
-        $( document ).ready( calculate() );
-        document.getElementById("weight").onchange = function(){calculate()};
-        document.getElementById("height").onchange = function(){calculate()};
-
-        $(document).ready(function() {
-            function close_accordion_section() {
-                $('.accordion .accordion-section-title').removeClass('active');
-                $('.accordion .accordion-section-content').slideUp(300).removeClass('open');
-            }
-
-            $('.accordion-section-title').click(function(e) {
-                // Grab current anchor value
-                var currentAttrValue = $(this).attr('href');
-
-                if($(e.target).is('.active')) {
-                    close_accordion_section();
-                }else {
-                    close_accordion_section();
-
-                    // Add active class to section title
-                    $(this).addClass('active');
-                    // Open up the hidden content panel
-                    $('.accordion ' + currentAttrValue).slideDown(300).addClass('open');
-                }
-
-                e.preventDefault();
-            });
-        });
+        $(document).ready( bmiCalculate() );
+        $(document).ready( accordionHandler() );
+        document.getElementById("weight").onchange = function(){bmiCalculate()};
+        document.getElementById("height").onchange = function(){bmiCalculate()};
     </script>
 </body>
 </html>

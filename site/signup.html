@@ -17,7 +17,7 @@
   <div class="wrapper">
     <nav class="menu">
       <input type="checkbox" class="menu-open" name="menu-open" id="menu-open"/>
-      <label class="menu-open-button" for="menu-open">
+      <label class="menu-open-button" for="menu-open">.
         <span class="hamburger hamburger-1"></span>
         <span class="hamburger hamburger-2"></span>
         <span class="hamburger hamburger-3"></span>
@@ -25,7 +25,7 @@
 
       <a href="index.html#" class="menu-item">
         <object data="images/home.svg" type="image/svg+xml" class="menu_icon">
-          Fitness
+          Home
         </object>
       </a>
       <a href="ptraining.html#" class="menu-item">
@@ -40,9 +40,29 @@
       </a>
       <a href="signup.html#" class="menu-item">
         <object data="images/forums.svg" type="image/svg+xml" class="menu_icon">
-          Fitness
+          Contact
         </object>
       </a>
+      <!-- filters -->
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+          <filter id="shadowed-goo">
+
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+            <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
+            <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
+            <feOffset in="shadow" dx="1" dy="1" result="shadow" />
+            <feComposite in2="shadow" in="goo" result="goo" />
+            <feComposite in2="goo" in="SourceGraphic" result="mix" />
+          </filter>
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+            <feComposite in2="goo" in="SourceGraphic" result="mix" />
+          </filter>
+        </defs>
+      </svg>
     </nav>
 
     <header>
@@ -65,7 +85,7 @@
       <div class="gmaps">
         <div id='gmap_canvas' class="gmap_canvas"></div>
       </div>
-      
+
       <form class="contact_form" action="MAILTO:connor_williams@msn.com" method="post" enctype="text/plain">
         <input type="text" name="firstname" placeholder="First name" title="firstname"/><br/>
         <input type="text" name="lastname" placeholder="Last name" title="lastname"/><br/>
@@ -91,7 +111,7 @@
     </a>
     <a href="http://www.instagram.com/compleatfitness" target="_blank">
       <img title="Instagram" src="images/instagram.svg" alt="Instagram" class="social_media"/>
-    </a> 
+    </a>
   </div>
 
   <footer>
@@ -113,32 +133,10 @@
     google.maps.event.addListener(marker, 'click', function(){
       infowindow.open(map,marker);
     });
-    infowindow.open(map,marker);
   }
   google.maps.event.addDomListener(window, 'load', init_map);
   </script>
 
 </body>
-
-<!-- filters -->
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-  <defs>
-    <filter id="shadowed-goo">
-
-      <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-      <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
-      <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
-      <feOffset in="shadow" dx="1" dy="1" result="shadow" />
-      <feComposite in2="shadow" in="goo" result="goo" />
-      <feComposite in2="goo" in="SourceGraphic" result="mix" />
-    </filter>
-    <filter id="goo">
-      <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-      <feComposite in2="goo" in="SourceGraphic" result="mix" />
-    </filter>
-  </defs>
-</svg>
 
 </html>

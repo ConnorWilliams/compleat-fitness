@@ -4,7 +4,7 @@ Colour Scheme:
 ** #000000 rgb(0, 0, 0)         Black
 ** #00cc66 rgb(0, 204, 102)     Turquiose
 ** #404040 rgb(64, 64, 64)      Dark grey
-** #ffd700 rgb(218, 165, 32)     Gold
+** #ffd700 rgb(218, 165, 32)    Gold
 ** #c0c0c0 rgb(192, 192, 192)   Silver
 ** #CD7F32 rgb(205, 127, 50)    Bronze
 */
@@ -90,6 +90,50 @@ p,ul {
 
 li {
   text-align: left;
+}
+
+/*----- Accordion -----*/
+.accordion, .accordion * {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+}
+
+.accordion {
+    overflow:hidden;;
+    border-radius:5px;
+    background:#333333;
+    margin-top: 40px;
+}
+
+/*----- Section Titles -----*/
+.accordion-section-title {
+    width:100%;
+    padding:15px;
+    display:inline-block;
+    border-bottom:1px solid #1a1a1a;
+    background:#262626;
+    transition:all linear 0.15s;
+    /* Type */
+    font-size:1.200em;
+    text-shadow:0px 1px 0px #1a1a1a;
+    color:#fff;
+}
+
+.accordion-section-title.active, .accordion-section-title:hover {
+    background:#333333;
+    /* Type */
+    text-decoration:none;
+}
+
+.accordion-section:last-child .accordion-section-title {
+    border-bottom:none;
+}
+
+/*----- Section Content -----*/
+.accordion-section-content {
+    padding:15px;
+    display:none;
 }
 
 /*--------------------*/

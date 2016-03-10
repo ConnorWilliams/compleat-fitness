@@ -1,0 +1,36 @@
+/*
+Colour Scheme:
+** #FFFFFF rgb(255, 255, 255)   White
+** #000000 rgb(0, 0, 0)         Black
+** #00cc66 rgb(0, 204, 102)     Turquiose
+** #404040 rgb(64, 64, 64)      Dark grey
+** #ffd700 rgb(218, 165, 32)    Gold
+** #c0c0c0 rgb(192, 192, 192)   Silver
+** #CD7F32 rgb(205, 127, 50)    Bronze
+*/
+
+* {
+  color: #FFFFFF;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: lighter;
+  text-decoration: none;
+}
+
+html,body{
+  height:100%;
+  margin:0;
+  padding:30px;
+  border:0;
+  background-color: #404040;
+}
+
+h1, h2 {
+  text-align: left;
+  text-decoration: underline;
+  margin-bottom: 0px;
+}
+
+a {
+    color: #00cc66;
+    text-decoration: underline;
+}

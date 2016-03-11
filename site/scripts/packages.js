@@ -1,3 +1,5 @@
+'use strict'
+
 function bmiCalculate(){
     var weight = document.getElementById('weight').value;
     var height = document.getElementById('height').value;

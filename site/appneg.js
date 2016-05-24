@@ -16,13 +16,23 @@
 // both are true, it sets the content type.
 
 var express = require('express');
-var app = express();
 var path = require('path');
+var nodemailer = require("nodemailer");
+var bodyParser = require('body-parser');
+var validator = require("email-validator");
+var app = express();
+
+// create reusable transporter object using the default SMTP transport
+var transporter = nodemailer.createTransport('smtps://cojwilliams%40gmail.com:webtechisgr8@smtp.gmail.com');
 
 app.use(negotiate);
 app.use(express.static(path.join(__dirname, '/public'), { setHeaders: deliverXHTML } ));
 app.use(validate);
+app.use(bodyParser());
 
+/*-------------------------*/
+/*-------- Routing --------*/
+/*-------------------------*/
 app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/views/index.html');
 });
@@ -39,10 +49,40 @@ app.get('/contact', function(req, res) {
     res.sendFile(__dirname + '/views/contact.html');
 });
 
-app.listen(8081, function() {
-	console.log('Express started on port 8081');
+app.post('/contactus', function(req, res) {
+
+    if(req.body.spamcatcher){
+        console.log("I see u.");
+        res.send("Spam detected.");
+    }
+
+    if(!req.body.firstname || !req.body.lastname || !req.body.message){
+        console.log("Please fill in all fields!");
+        res.send("Please fill in all fields!");
+    }
+
+    console.log(validator.validate(req.body.email));
+
+    var mailOptions = {
+        from: '"'+req.body.firstname+' '+req.body.lastname+'" '+req.body.email, // sender address
+        to: 'connor_williams@msn.com', // list of receivers
+        subject: 'Message from '+req.body.email, // Subject line
+        text: req.body.message, // plaintext body
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            return console.log(error);
+        }
+        console.log('Message sent: ' + info.response);
+        res.sendFile(__dirname + '/views/contact.html');
+    });
 });
 
+/*---------------------------*/
+/*-------- Functions --------*/
+/*---------------------------*/
 // Check whether the browser accepts XHTML, and record it in the response.
 function negotiate(req, res, next) {
     var accepts = req.headers.accept.split(",");
@@ -75,33 +115,10 @@ function validate(req, res, next) {
 function starts(s, x) { return s.lastIndexOf(x, 0) == 0; }
 function ends(s, x) { return s.indexOf(x, s.length-x.length) >= 0; }
 
+/*---------------------------*/
+/*-------- Listening --------*/
+/*---------------------------*/
 
-var nodemailer = require('nodemailer');
-app.post('/contact', function (req, res) {
-  var mailOpts, smtpTrans;
-  //Setup Nodemailer transport, I chose gmail. Create an application-specific password to avoid problems.
-  smtpTrans = nodemailer.createTransport('SMTP', {
-      service: 'Gmail',
-      auth: {
-          user: "me@gmail.com",
-          pass: "application-specific-password"
-      }
-  });
-  //Mail options
-  mailOpts = {
-      from: req.body.name + ' &lt;' + req.body.email + '&gt;', //grab form data from the request body object
-      to: 'me@gmail.com',
-      subject: 'Website contact form',
-      text: req.body.message
-  };
-  smtpTrans.sendMail(mailOpts, function (error, response) {
-      //Email not sent
-      if (error) {
-          res.render('contact', { title: 'Raging Flame Laboratory - Contact', msg: 'Error occured, message not sent.', err: true, page: 'contact' })
-      }
-      //Yay!! Email sent
-      else {
-          res.render('contact', { title: 'Raging Flame Laboratory - Contact', msg: 'Message sent! Thank you.', err: false, page: 'contact' })
-      }
-  });
+app.listen(8081, function() {
+	console.log('Express started on port 8081');
 });

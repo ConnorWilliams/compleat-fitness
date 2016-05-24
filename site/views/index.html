@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
+    <head>
+        <meta charset="UTF-8"/>
+        <link href="images/favicon.png" rel="icon" type="image/png"/>
+        <link href="stylesheets/compleat.css" rel="stylesheet"/>
+        <link href="stylesheets/nav_bar.css" rel="stylesheet"/>
+        <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <title>
+            Report on Compleat Fitness
+        </title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <nav class="menu">
+                <input type="checkbox" class="menu-open" name="menu-open" id="menu-open"/>
+                <label class="menu-open-button" for="menu-open">
+                    .
+                    <span class="hamburger hamburger-1">
+                    </span>
+                    <span class="hamburger hamburger-2">
+                    </span>
+                    <span class="hamburger hamburger-3">
+                    </span>
+                </label>
+                <a href="/" class="menu-item">
+                    <object data="images/home.svg" type="image/svg+xml" class="menu_icon">
+                        Home
+                    </object>
+                </a>
+                <a href="packages" class="menu-item">
+                    <object data="images/barbell.svg" type="image/svg+xml" class="menu_icon">
+                        Fitness Plans
+                    </object>
+                </a>
+                <a href="nutrition" class="menu-item">
+                    <object data="images/cutlery.svg" type="image/svg+xml" class="menu_icon">
+                        Healthy Recipes
+                    </object>
+                </a>
+                <a href="contact" class="menu-item">
+                    <object data="images/forums.svg" type="image/svg+xml" class="menu_icon">
+                        Contact
+                    </object>
+                </a>
+                <!-- filters -->
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                    <defs>
+                        <filter id="shadowed-goo">
+                            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"/>
+                                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"/>
+                                    <feGaussianBlur in="goo" stdDeviation="3" result="shadow"/>
+                                        <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow"/>
+                                            <feOffset in="shadow" dx="1" dy="1" result="shadow"/>
+                                                <feComposite in2="shadow" in="goo" result="goo"/>
+                                                    <feComposite in2="goo" in="SourceGraphic" result="mix"/>
+                                                    </filter>
+                                                    <filter id="goo">
+                                                        <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"/>
+                                                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"/>
+                                                                <feComposite in2="goo" in="SourceGraphic" result="mix"/>
+                                                                </filter>
+                                                            </defs>
+                                                        </svg>
+                                                    </nav>
+                                                    <header>
+                                                        <a href="index.html#">
+                                                            <img src="images/title.png" alt="compleat fitness"/>
+                                                        </a>
+                                                    </header>
+                                                    <main>
+                                                        <h1>
+                                                            About
+                                                        </h1>
+                                                        <img src="images/squat.png" alt="ME SQUATTING 240kg" class="squat"/>
+                                                        <p>
+                                                            There is no one size fits all when it comes to a fitness regime.
+                                                            People come in many different shapes and sizes so, inevitably, so should their training programmes.
+                                                            <br/>
+                                                            <br/>
+                                                            Compleat Fitness personal training and nutrition packages are tailored
+                                                            specifically to your needs, goals, and preferences, so that you can get
+                                                            exactly what you want out of your fitness and diet regime. All packages
+                                                            include a one to one health and fitness consultation, diet analysis,
+                                                            personalised goal setting and text and email support throughout the
+                                                            programme, so whether your goal is fat loss, muscle gain, improved
+                                                            general fitness or anything in between, I'll design an achievable
+                                                            programme that works for you.
+                                                            <br/>
+                                                            <br/>
+                                                            Lorem ipsum dolor sit amet, consectetur
+                                                            adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                                                            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                                            culpa qui officia deserunt mollit anim id est laborum.
+                                                        </p>
+                                                        <div class="qual_skills">
+                                                            <div class="qualifications">
+                                                                <p>
+                                                                    Qualifications:
+                                                                </p>
+                                                                <ul>
+                                                                    <li>
+                                                                        Level 2 Gym Instructor
+                                                                    </li>
+                                                                    <li>
+                                                                        Level 3 Personal Trainer
+                                                                    </li>
+                                                                    <li>
+                                                                        Diploma in holistic nutrition
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="specialities">
+                                                                <p>
+                                                                    Areas of Speciality:
+                                                                </p>
+                                                                <ul>
+                                                                    <li>
+                                                                        Weight loss
+                                                                    </li>
+                                                                    <li>
+                                                                        Body confidence
+                                                                    </li>
+                                                                    <li>
+                                                                        Strength and tone
+                                                                    </li>
+                                                                    <li>
+                                                                        Nutrition
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </main>
+                                                </div>
+                                                <div class="social_media_icons">
+                                                    <a href="http://www.facebook.com/compleatfitness.jen" target="_blank">
+                                                        <img title="Facebook" src="images/facebook.svg" alt="Facebook" class="social_media"/>
+                                                    </a>
+                                                    <a href="http://www.instagram.com/compleatfitness" target="_blank">
+                                                        <img title="Instagram" src="images/instagram.svg" alt="Instagram" class="social_media"/>
+                                                    </a>
+                                                </div>
+                                                <footer>
+                                                    <a href="mailto:fc13269@bristol.ac.uk">
+                                                        Freddie Caira
+                                                    </a>
+                                                    and
+                                                    <a href="mailto:cw13121@bristol.ac.uk">
+                                                        Connor Williams
+                                                    </a>
+                                                </footer>
+                                            </body>
+                                        </html>

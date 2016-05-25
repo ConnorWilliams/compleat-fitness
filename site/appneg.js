@@ -22,11 +22,15 @@ var bodyParser = require('body-parser');
 var validator = require("email-validator");
 var app = express();
 
+// MongoDB integration
+var mongojs = require('mongojs');
+var db = mongojs('commentlist', ['commentlist']);
+
 // create reusable transporter object using the default SMTP transport
 var transporter = nodemailer.createTransport('smtps://cojwilliams%40gmail.com:webtechisgr8@smtp.gmail.com');
 
 app.use(negotiate);
-app.use(express.static(path.join(__dirname, '/public'), { setHeaders: deliverXHTML } ));
+app.use(express.static(path.join(__dirname, '/public'), { setHeaders: deliverXHTML }));
 app.use(validate);
 app.use(bodyParser());
 
@@ -34,7 +38,7 @@ app.use(bodyParser());
 /*-------- Routing --------*/
 /*-------------------------*/
 app.get('/', function(req, res) {
-	res.sendFile(__dirname + '/views/index.html');
+    res.sendFile(__dirname + '/views/index.html');
 });
 
 app.get('/packages', function(req, res) {
@@ -42,7 +46,22 @@ app.get('/packages', function(req, res) {
 });
 
 app.get('/nutrition', function(req, res) {
-	res.sendFile(__dirname + '/views/nutrition.html');
+    res.sendFile(__dirname + '/views/nutrition.html');
+});
+
+app.get('/nutrition:id', function(req, res) {
+    console.log('I receieved a GET request');
+    db.commentlist.find(function(err, docs) {
+        console.log(docs);
+        res.json(docs);
+    });
+});
+
+app.post('/nutrition', function(req, res) {
+    console.log(req.body);
+    db.commentlist.insert(req.body, function(err, doc) {
+        res.json(doc);
+    });
 });
 
 app.get('/contact', function(req, res) {
@@ -51,12 +70,12 @@ app.get('/contact', function(req, res) {
 
 app.post('/contactus', function(req, res) {
 
-    if(req.body.spamcatcher){
+    if (req.body.spamcatcher) {
         console.log("I see u.");
         res.send("Spam detected.");
     }
 
-    if(!req.body.firstname || !req.body.lastname || !req.body.message){
+    if (!req.body.firstname || !req.body.lastname || !req.body.message) {
         console.log("Please fill in all fields!");
         res.send("Please fill in all fields!");
     }
@@ -64,15 +83,15 @@ app.post('/contactus', function(req, res) {
     console.log(validator.validate(req.body.email));
 
     var mailOptions = {
-        from: '"'+req.body.firstname+' '+req.body.lastname+'" '+req.body.email, // sender address
+        from: '"' + req.body.firstname + ' ' + req.body.lastname + '" ' + req.body.email, // sender address
         to: 'connor_williams@msn.com', // list of receivers
-        subject: 'Message from '+req.body.email, // Subject line
+        subject: 'Message from ' + req.body.email, // Subject line
         text: req.body.message, // plaintext body
     };
 
     // send mail with defined transport object
-    transporter.sendMail(mailOptions, function(error, info){
-        if(error){
+    transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
             return console.log(error);
         }
         console.log('Message sent: ' + info.response);
@@ -107,18 +126,23 @@ function validate(req, res, next) {
     // if (url.lastIndexOf(".") < url.lastIndexOf("/")) valid = false;
     if (ends(url, "..")) valid = false;
     console.log(url, valid);
-    if (valid==false) res.redirect('/');
+    if (valid == false) res.redirect('/');
     next();
 }
 // Check whether a string starts with a prefix, or ends with a suffix.  (The
 // starts function uses a well-known efficiency trick.)
-function starts(s, x) { return s.lastIndexOf(x, 0) == 0; }
-function ends(s, x) { return s.indexOf(x, s.length-x.length) >= 0; }
+function starts(s, x) {
+    return s.lastIndexOf(x, 0) == 0;
+}
+
+function ends(s, x) {
+    return s.indexOf(x, s.length - x.length) >= 0;
+}
 
 /*---------------------------*/
 /*-------- Listening --------*/
 /*---------------------------*/
 
 app.listen(8081, function() {
-	console.log('Express started on port 8081');
+    console.log('Express started on port 8081');
 });

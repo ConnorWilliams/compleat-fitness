@@ -9,263 +9,306 @@ Colour Scheme:
 ** #CD7F32 rgb(205, 127, 50)    Bronze
 */
 
+
 /*-------------------*/
+
+
 /*     ALL PAGES     */
+
+
 /*-------------------*/
+
 * {
-  color: #FFFFFF;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: lighter;
-  text-decoration: none;
+    color: #FFFFFF;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: lighter;
+    text-decoration: none;
 }
 
-html,body{
-  height:100%;
-  margin:0;
-  padding:0;
-  border:0;
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 
 .wrapper {
-	min-height: 100%;
-	margin: 0 auto -40px; /* the bottom margin is the negative value of the footer's height */
+    min-height: 100%;
+    margin: 0 auto -40px;
+    /* the bottom margin is the negative value of the footer's height */
 }
 
-body{
-  background-color: #404040;
-  background-image: url(../images/fitness_10.png);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: right bottom;
+body {
+    background-color: #404040;
+    background-image: url(../images/fitness_10.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: right bottom;
 }
 
-header{
-  padding: 20px;
-  background-color:rgba(64, 64, 64);
-  background-color:rgba(64, 64, 64,0.5);
-  display: flex;
-  justify-content: center; /* align horizontal */
-  align-items: center; /* align vertical */
+header {
+    padding: 20px;
+    background-color: rgba(64, 64, 64);
+    background-color: rgba(64, 64, 64, 0.5);
+    display: flex;
+    justify-content: center;
+    /* align horizontal */
+    align-items: center;
+    /* align vertical */
 }
 
-main{
-  display: block;
-  overflow: auto;
-  padding: 20px;
-  padding-bottom:100px; /* Height of the footer element */
-  width: 80%;
-  margin: auto;
-  text-align: justify;
+main {
+    display: block;
+    overflow: auto;
+    padding: 20px;
+    padding-bottom: 100px;
+    /* Height of the footer element */
+    width: 80%;
+    margin: auto;
+    text-align: justify;
 }
 
-footer{
-  height: 30px;
-  line-height: 30px;
-  padding: 5px;
-  text-align: right;
-  background-color:rgba(64, 64, 64,0.5);
+footer {
+    height: 30px;
+    line-height: 30px;
+    padding: 5px;
+    text-align: right;
+    background-color: rgba(64, 64, 64, 0.5);
 }
 
 .social_media_icons {
-  text-align: center;
-  width: 100%
+    text-align: center;
+    width: 100%
 }
 
-.social_media{
-  /*pointer-events: none;*/
-  padding: 10px;
-  width: 60px;
+.social_media {
+    /*pointer-events: none;*/
+    padding: 10px;
+    width: 60px;
 }
 
 h1 {
-  text-align: left;
-  font-size: 40px;
+    text-align: left;
+    font-size: 40px;
 }
 
-p,ul {
-  font-size: 20px;
-  line-height: 150%;
+p,
+ul {
+    font-size: 20px;
+    line-height: 150%;
 }
 
 li {
-  text-align: left;
+    text-align: left;
 }
 
+
 /*----- Accordion -----*/
-.accordion, .accordion * {
-    -webkit-box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    box-sizing:border-box;
+
+.accordion,
+.accordion * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .accordion {
-    overflow:hidden;;
-    border-radius:5px;
-    background:#333333;
+    overflow: hidden;
+    ;
+    border-radius: 5px;
+    background: #333333;
     margin-top: 40px;
 }
 
+
 /*----- Section Titles -----*/
+
 .accordion-section-title {
-    width:100%;
-    padding:15px;
-    display:inline-block;
-    border-bottom:1px solid #1a1a1a;
-    background:#262626;
-    transition:all linear 0.15s;
+    width: 100%;
+    padding: 15px;
+    display: inline-block;
+    border-bottom: 1px solid #1a1a1a;
+    background: #262626;
+    transition: all linear 0.15s;
     /* Type */
-    font-size:1.200em;
-    text-shadow:0px 1px 0px #1a1a1a;
-    color:#fff;
+    font-size: 1.200em;
+    text-shadow: 0px 1px 0px #1a1a1a;
+    color: #fff;
 }
 
-.accordion-section-title.active, .accordion-section-title:hover {
-    background:#333333;
+.accordion-section-title.active,
+.accordion-section-title:hover {
+    background: #333333;
     /* Type */
-    text-decoration:none;
+    text-decoration: none;
 }
 
 .accordion-section:last-child .accordion-section-title {
-    border-bottom:none;
+    border-bottom: none;
 }
+
 
 /*----- Section Content -----*/
+
 .accordion-section-content {
-    padding:15px;
-    display:none;
+    padding: 15px;
+    display: none;
 }
 
+
 /*--------------------*/
+
+
 /*     INDEX PAGE     */
+
+
 /*--------------------*/
+
 .about {
-  width: 100%;
+    width: 100%;
 }
 
 .squat {
-  width: 35%;
-  min-width: 200px;
-  float: left;
-  margin-right: 20px;
-  border-radius: 10px;
-  text-align: justify;
+    width: 35%;
+    min-width: 200px;
+    float: left;
+    margin-right: 20px;
+    border-radius: 10px;
+    text-align: justify;
 }
 
 .qual_skills {
-  width: 100%;
-  margin: auto;
+    width: 100%;
+    margin: auto;
 }
 
 .qualifications {
-  width: 45%;
-  float: left;
-  display: inline-block;
-  border-radius: 10px;
-  padding: 20px;
-  background-color: rgba(128,128,128,0.5);
+    width: 45%;
+    float: left;
+    display: inline-block;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: rgba(128, 128, 128, 0.5);
 }
 
 .specialities {
-  width: 45%;
-  float: right;
-  display: inline-block;
-  border-radius: 10px;
-  padding: 20px;
-  background-color: rgba(128,128,128,0.5);
+    width: 45%;
+    float: right;
+    display: inline-block;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: rgba(128, 128, 128, 0.5);
 }
 
 
 /*---------------------*/
+
+
 /*     PTRAIN PAGE     */
+
+
 /*---------------------*/
+
 .packages {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin: auto;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: auto;
 }
 
 .gold {
-  width: auto;;
-  height: auto;
-  margin: 5px;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: rgba(218, 165, 32, 0.5);
-  text-align: left;
+    width: auto;
+    ;
+    height: auto;
+    margin: 5px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(218, 165, 32, 0.5);
+    text-align: left;
 }
 
 .silver {
-  width: auto;
-  height: auto;
-  margin: 5px;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: rgba(192, 192, 192, 0.5);
-  text-align: left;
+    width: auto;
+    height: auto;
+    margin: 5px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(192, 192, 192, 0.5);
+    text-align: left;
 }
 
 .bronze {
-  width: auto;
-  height: auto;
-  margin: 5px;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: rgba(205, 127, 50, 0.5);
-  text-align: left;
+    width: auto;
+    height: auto;
+    margin: 5px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(205, 127, 50, 0.5);
+    text-align: left;
 }
 
 .bmi {
-  float: left;
-  width: auto;
-  min-width: 500px;
-  padding: 20px;
-  background-color: rgba(128,128,128,0.5);
-  margin: 10px auto;
-  padding: 20px;
-  border-radius: 10px;
+    float: left;
+    width: auto;
+    min-width: 500px;
+    padding: 20px;
+    background-color: rgba(128, 128, 128, 0.5);
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 10px;
 }
 
+
 /*-------------------*/
+
+
 /*     NUTRITION     */
+
+
 /*-------------------*/
 
 .instafeed {
-  width: 150px;
-  margin: auto;
+    width: 150px;
+    margin: auto;
 }
 
+
 /*-------------------*/
+
+
 /*     CONTACT     */
+
+
 /*-------------------*/
 
 .contact_info {
-  width: 50%;
-  float: left;
-  display: inline-block;
+    width: 50%;
+    float: left;
+    display: inline-block;
 }
 
 .contact_form {
-  width: 50%;
-  float: left;
+    width: 50%;
+    float: left;
 }
 
 .gmaps {
-  float: right;
-  overflow: hidden;
-  display: inline-block;
-  height: 400px;
-  width: 500px;
+    float: right;
+    overflow: hidden;
+    display: inline-block;
+    height: 400px;
+    width: 500px;
 }
 
 .gmap_canvas {
-  height: 400px;
-  width: 500px;
-  color: #000
+    height: 400px;
+    width: 500px;
+    color: #000
 }
 
 #gmap_canvas img {
-  max-width:none!important;
-  background:none!important;
+    max-width: none!important;
+    background: none!important;
 }

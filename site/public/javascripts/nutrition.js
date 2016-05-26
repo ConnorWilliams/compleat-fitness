@@ -18,6 +18,12 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     var dd = today.getDate();
     var mm = today.getMonth() + 1;
     var yyyy = today.getFullYear();
+    if (hr < 10) {
+        hr = '0' + hr
+    }
+    if (min < 10) {
+        min = '0' + min
+    }
     if (dd < 10) {
         dd = '0' + dd
     }
@@ -27,6 +33,14 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     var today = hr + ':' + min + ' ' + dd + '/' + mm + '/' + yyyy;
 
     $scope.addComment = function() {
+        if ($scope.comment.username === undefined || $scope.comment.usercomment === undefined || $scope.comment.username.length == 0 || $scope.comment.usercomment.length == 0) {
+            $("p.alert").text("Please fill both fields!");
+            return;
+        }
+        if ($scope.comment.username.length > 10) {
+            $("p.alert").text("Please choose a username fewer than 10 characters!");
+            return;
+        }
         $scope.comment.datetime = today;
         console.log($scope.comment);
         $http.post('/nutrition', $scope.comment).success(function(response) {

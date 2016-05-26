@@ -139,8 +139,14 @@
             dataType: "json",
             data: {firstname:fn, lastname:ln, email:eml, message:msg},
             success: function(result){
-                console.log(result.valid)
-                document.getElementById("feedback").innerHTML=result.valid;
+                document.getElementById("feedback").innerHTML=result.resp;
+                if (result.success){
+                    console.log("Sent it man")
+                    document.getElementById("firstname").value='';
+                    document.getElementById("lastname").value='';
+                    document.getElementById("email").value='';
+                    document.getElementById("message").value='';
+                }
             }
         });
     }

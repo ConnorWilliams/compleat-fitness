@@ -70,19 +70,17 @@ app.get('/contact', function(req, res) {
 
 app.post('/send_mail', function(req, res) {
     var send = true;
-    console.log(req.body);
-
     if (req.body.spamcatcher) {
         send = false;
     }
 
     if (!req.body.firstname || !req.body.lastname || !req.body.message) {
-        res.end('{"valid": "Please fill in all fields!"}');
+        res.end('{"resp": "Please fill in all fields!"}');
         send = false;
     }
 
     if (!validator.validate(req.body.email)){
-        res.end('{"valid": "Email address invalid."}');
+        res.end('{"resp": "Email address invalid."}');
         send = false;
     }
 
@@ -99,7 +97,7 @@ app.post('/send_mail', function(req, res) {
             if (error) {
                 return console.log(error);
             }
-            res.end('{"valid": "Message Sent!!!"}');
+            res.end('{"resp": "Message sent!", "success":"true"}');
         });
     }
 });

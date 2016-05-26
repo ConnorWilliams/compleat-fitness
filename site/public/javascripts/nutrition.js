@@ -42,6 +42,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
             return;
         }
         $scope.comment.datetime = today;
+        $("p.alert").text("");
         console.log($scope.comment);
         $http.post('/nutrition', $scope.comment).success(function(response) {
             console.log(response);

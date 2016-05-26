@@ -1,5 +1,6 @@
 #!/bin/bash
-# This command starts host process for databases 
-# creates the database if it does not already exist
-# and then starts the server
-mongod -dbpath data & node appneg.js
+# This command 
+# - creates directory for database if doesn't already exist
+# - starts host process for databases 
+# - starts the server
+mkdir data & mongod -dbpath data & node appneg.js

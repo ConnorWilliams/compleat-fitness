@@ -1,3 +1,21 @@
+/*
+ALL COLOURS USED
+rgb(0, 0, 0); general:BLACK
+rgb(255, 255, 255); general:WHITE
+rgb(0, 204, 102); thematic:GREEN
+rgb(0, 153, 77); btn-hover:DIM GREEN
+rgb(128, 128, 128); module-b.g.:GREY
+rgb(64, 64, 64); website-b.g.:DARK GREY
+rgb(232, 238, 239); inputbox-b.g.:OFF WHITE
+rgb(210, 217, 221); inputbox-focus:LIGHT GREY
+rgb(205, 127, 50); packages:BRONZE
+rgb(192, 192, 192); packages:SILVER
+rgb(218, 165, 32); packages:GOLD
+rgb(26, 26, 26); FAQsaccordion-border
+rgb(38, 38, 38); FAQsaccordion-b.g
+rgb(51, 51, 51); FAQsaccordion-hover
+*/
+
 .menu {
     -webkit-filter: url("#shadowed-goo");
     filter: url("#shadowed-goo");
@@ -14,7 +32,7 @@
 
 .menu-item,
 .menu-open-button {
-    background: #FFF;
+    background: rgb(255, 255, 255);
     color: white;
     border-radius: 100%;
     width: 80px;
@@ -50,7 +68,7 @@ object {
 .hamburger {
     width: 25px;
     height: 3px;
-    background: #000;
+    background: rgb(0, 0, 0);
     display: block;
     position: absolute;
     top: 50%;
@@ -94,7 +112,7 @@ object {
 }
 
 .menu-item:hover {
-    background: #00cc66;
+    background: rgb(0, 204, 102);
 }
 
 .menu-item:nth-child(3) {

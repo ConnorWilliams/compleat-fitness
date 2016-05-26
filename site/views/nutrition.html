@@ -6,9 +6,9 @@
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <!-- <link href="stylesheets/commentbox.css" res="stylesheet" /> -->
 
     <link href="images/favicon.png" rel="icon" type="image/png" />
-    <!-- <link href="stylesheets/commentbox.css" res="stylesheet" <link href="stylesheets/compleat.css" rel="stylesheet" /> -->
     <link href="stylesheets/compleat.css" rel="stylesheet" />
     <link href="stylesheets/nav_bar.css" rel="stylesheet" />
     <link href="stylesheets/slick.css" rel="stylesheet" type="text/css" />
@@ -112,7 +112,7 @@
                                 <button class="btn btn-primary" ng-click="addComment()">Post</button>
                             </td>
                         </tr>
-                        <tr ng-repeat="comment in commentlist track by $index">
+                        <tr ng-repeat="comment in commentlist | reverse">
                             <td>{{comment.datetime}}</td>
                             <td>{{comment.username}}</td>
                             <td>{{comment.usercomment}}</td>
@@ -124,7 +124,7 @@
     </div>
 
     <!-- Instafeed -->
-    <div id="instafeed" class="instafeed"></div>
+    <!-- <div id="instafeed" class="instafeed"></div> -->
 
     <!-- Social Media Icons -->
     <div class="social_media_icons">
@@ -144,27 +144,27 @@
     <script src="javascripts/controller.js"></script>
 
     <script>
-    var feed = new Instafeed({
-        clientId: 'e0347429fc5548d48ddb0b92cbfbfcbb',
-        accessToken: '233584328.e034742.88db8c1704d14b11856e3382dba76ad9',
-        get: 'user',
-        userId: '233584328',
-        after: function() {
-            runSlick();
-        },
-    });
-    feed.run();
+    // var feed = new Instafeed({
+    //     clientId: 'e0347429fc5548d48ddb0b92cbfbfcbb',
+    //     accessToken: '233584328.e034742.88db8c1704d14b11856e3382dba76ad9',
+    //     get: 'user',
+    //     userId: '233584328',
+    //     after: function() {
+    //         runSlick();
+    //     },
+    // });
+    // feed.run();
 
-    function runSlick() {
-        $('.instafeed').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 2000,
-            fade: true,
-            arrows: false,
-        });
-    }
+    // function runSlick() {
+    //     $('.instafeed').slick({
+    //         slidesToShow: 1,
+    //         slidesToScroll: 1,
+    //         autoplay: true,
+    //         autoplaySpeed: 2000,
+    //         fade: true,
+    //         arrows: false,
+    //     });
+    // }
     </script>
 
 </body>

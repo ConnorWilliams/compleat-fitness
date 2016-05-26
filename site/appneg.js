@@ -68,35 +68,40 @@ app.get('/contact', function(req, res) {
     res.sendFile(__dirname + '/views/contact.html');
 });
 
-app.post('/contactus', function(req, res) {
+app.post('/send_mail', function(req, res) {
+    var send = true;
+    console.log(req.body);
 
     if (req.body.spamcatcher) {
-        console.log("I see u.");
-        res.send("Spam detected.");
+        send = false;
     }
 
     if (!req.body.firstname || !req.body.lastname || !req.body.message) {
-        console.log("Please fill in all fields!");
-        res.send("Please fill in all fields!");
+        res.end('{"valid": "Please fill in all fields!"}');
+        send = false;
     }
 
-    console.log(validator.validate(req.body.email));
+    if (!validator.validate(req.body.email)){
+        res.end('{"valid": "Email address invalid."}');
+        send = false;
+    }
 
-    var mailOptions = {
-        from: '"' + req.body.firstname + ' ' + req.body.lastname + '" ' + req.body.email, // sender address
-        to: 'connor_williams@msn.com', // list of receivers
-        subject: 'Message from ' + req.body.email, // Subject line
-        text: req.body.message, // plaintext body
-    };
+    if (send==true) {
+        var mailOptions = {
+            from: '"' + req.body.firstname + ' ' + req.body.lastname + '" ' + req.body.email, // sender address
+            to: 'connor_williams@msn.com', // list of receivers
+            subject: 'Message from ' + req.body.email, // Subject line
+            text: req.body.message, // plaintext body
+        };
 
-    // send mail with defined transport object
-    transporter.sendMail(mailOptions, function(error, info) {
-        if (error) {
-            return console.log(error);
-        }
-        console.log('Message sent: ' + info.response);
-        res.sendFile(__dirname + '/views/contact.html');
-    });
+        // send mail with defined transport object
+        transporter.sendMail(mailOptions, function(error, info) {
+            if (error) {
+                return console.log(error);
+            }
+            res.end('{"valid": "Message Sent!!!"}');
+        });
+    }
 });
 
 app.get('/404', function(req, res) {

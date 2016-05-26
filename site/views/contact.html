@@ -85,9 +85,9 @@
                 <div id='gmap_canvas' class="gmap_canvas">
                 </div>
             </div>
-
             <!-- Contact Form -->
             <form class="contact_form" action="/contactus" method="post">
+                <p id="feedback"></p>
                 <input type="text" name="spamcatcher" id="spamcatcher" title="spamcatcher" style="visibility: hidden" />
                 <input type="text" name="firstname" id="firstname" placeholder="First name" title="firstname" />
                 <br/>
@@ -106,7 +106,7 @@
                 <label>
                     <input type="checkbox" name="email" value="email" /> Tick if you would like to receive the odd email. You can unsubscribe at any point.
                 </label>
-                <input type="submit" value="Submit" />
+                <input type="button" value="Send" onclick="send_mail()"/>
             </form>
         </main>
     </div>
@@ -127,6 +127,24 @@
     <!-- Scripts -->
     <script>
     google.maps.event.addDomListener(window, 'load', init_map);
+
+    function send_mail(){
+        var fn = document.getElementById("firstname").value
+        var ln = document.getElementById("lastname").value
+        var eml = document.getElementById("email").value
+        var msg = document.getElementById("message").value
+        $.ajax({
+            type: 'POST',
+            url: '/send_mail',
+            dataType: "json",
+            data: {firstname:fn, lastname:ln, email:eml, message:msg},
+            success: function(result){
+                console.log(result.valid)
+                document.getElementById("feedback").innerHTML=result.valid;
+            }
+        });
+    }
+
     </script>
 
 </body>

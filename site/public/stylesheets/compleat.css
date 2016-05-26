@@ -104,6 +104,14 @@ li {
     text-align: left;
 }
 
+.a04{
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.a04msg{
+    font-size: 40px;
+}
 
 /*----- Accordion -----*/
 

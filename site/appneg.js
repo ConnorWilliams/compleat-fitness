@@ -99,6 +99,10 @@ app.post('/contactus', function(req, res) {
     });
 });
 
+app.get('/404', function(req, res) {
+    res.sendFile(__dirname + '/views/404.html');
+});
+
 /*---------------------------*/
 /*-------- Functions --------*/
 /*---------------------------*/
@@ -126,7 +130,7 @@ function validate(req, res, next) {
     // if (url.lastIndexOf(".") < url.lastIndexOf("/")) valid = false;
     if (ends(url, "..")) valid = false;
     console.log(url, valid);
-    if (valid == false) res.redirect('/');
+    if (valid == false) res.redirect('/404');
     next();
 }
 // Check whether a string starts with a prefix, or ends with a suffix.  (The

@@ -117,6 +117,11 @@ object {
     transition-duration: 180ms;
 }
 
+.menu-item:nth-child(7) {
+    -webkit-transition-duration: 180ms;
+    transition-duration: 180ms;
+}
+
 .menu-open-button {
     z-index: 2;
     -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -173,4 +178,11 @@ object {
     transition-duration: 410ms;
     -webkit-transform: translate3d(320px, 0, 0);
     transform: translate3d(320px, 0, 0);
+}
+
+.menu-open:checked ~ .menu-item:nth-child(7) {
+    -webkit-transition-duration: 490ms;
+    transition-duration: 490ms;
+    -webkit-transform: translate3d(400px, 0, 0);
+    transform: translate3d(400px, 0, 0);
 }

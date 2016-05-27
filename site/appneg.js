@@ -64,6 +64,10 @@ app.post('/nutrition', function(req, res) {
     });
 });
 
+app.get('/gallery', function(req, res) {
+    res.sendFile(__dirname + '/views/gallery.html');
+});
+
 app.get('/contact', function(req, res) {
     res.sendFile(__dirname + '/views/contact.html');
 });

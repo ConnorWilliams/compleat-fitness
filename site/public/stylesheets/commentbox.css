@@ -1,7 +1,27 @@
+/*
+ALL COLOURS USED
+rgb(0, 0, 0); general:BLACK
+rgb(255, 255, 255); general:WHITE
+rgb(0, 204, 102); thematic:GREEN
+rgb(0, 153, 77); btn-hover:DIM GREEN
+rgb(128, 128, 128); module-b.g.:GREY
+rgb(64, 64, 64); website-b.g.:DARK GREY
+rgb(232, 238, 239); inputbox-b.g.:OFF WHITE
+rgb(210, 217, 221); inputbox-focus:LIGHT GREY
+rgb(205, 127, 50); packages:BRONZE
+rgb(192, 192, 192); packages:SILVER
+rgb(218, 165, 32); packages:GOLD
+rgb(26, 26, 26); FAQsaccordion-border
+rgb(38, 38, 38); FAQsaccordion-b.g
+rgb(51, 51, 51); FAQsaccordion-hover
+*/
+
+
+/* Comments Module */
+
 .container {
     width: 97%;
-    min-width: 500px;
-    max-height: 1000px;
+    min-width: 500px max-height: 1000px;
     padding: 20px;
     background-color: rgba(128, 128, 128, 0.5);
     margin: 10px auto;
@@ -9,21 +29,36 @@
     overflow-y: scroll;
 }
 
+
+/* Entire Table */
+
 table {
     width: 100%;
     table-layout: fixed;
 }
 
-thead,
-tbody {
-    width: 100%;
+
+/* Columns */
+
+td {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-top: thin solid;
+    word-wrap: break-word;
+    height: 50px;
 }
+
+
+/* Rows */
 
 tr {
     font-size: 18px;
     text-align: left;
     width: 100%;
 }
+
+
+/* Column widths & heading size */
 
 .col-1 {
     width: 13%;
@@ -45,23 +80,24 @@ tr {
     font-size: 20px;
 }
 
+
+/* Wrong input alert colour */
+
 .alert {
-    color: #00cc66;
+    color: rgb(0, 204, 102);
 }
 
-td {
-    padding-bottom: 10px;
-    padding-top: 10px;
-    border-top: thin solid;
-    word-wrap: break-word;
-    height: 50px;
-}
+
+/* Make comment cell scrollable */
 
 .scrollable {
     max-height: 100px;
     overflow-y: auto;
     overflow-x: hidden;
 }
+
+
+/* Input Boxes (name & comment) */
 
 .form-control {
     background: rgb(232, 238, 239);
@@ -79,12 +115,18 @@ td {
     height: 33px;
 }
 
+
+/* Set background colour for input boxes */
+
 .form-control:focus {
     background: rgb(210, 217, 221);
 }
 
+
+/* Format 'Post' button */
+
 .btn {
-    background: #00cc66;
+    background: rgb(0, 204, 102);
     border: 0;
     border-radius: 4px;
     color: rgb(0, 0, 0);
@@ -97,6 +139,9 @@ td {
     padding-bottom: 5px;
 }
 
+
+/* Set hover colour for button */
+
 .btn:hover {
-    background: #00ff80;
+    background: rgb(0, 153, 77);
 }

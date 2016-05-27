@@ -1,12 +1,19 @@
 /*
-Colour Scheme:
-** #FFFFFF rgb(255, 255, 255)   White
-** #000000 rgb(0, 0, 0)         Black
-** #00cc66 rgb(0, 204, 102)     Turquiose
-** #404040 rgb(64, 64, 64)      Dark grey
-** #ffd700 rgb(218, 165, 32)    Gold
-** #c0c0c0 rgb(192, 192, 192)   Silver
-** #CD7F32 rgb(205, 127, 50)    Bronze
+ALL COLOURS USED
+rgb(0, 0, 0); general:BLACK
+rgb(255, 255, 255); general:WHITE
+rgb(0, 204, 102); thematic:GREEN
+rgb(0, 153, 77); btn-hover:DIM GREEN
+rgb(128, 128, 128); module-b.g.:GREY
+rgb(64, 64, 64); website-b.g.:DARK GREY
+rgb(232, 238, 239); inputbox-b.g.:OFF WHITE
+rgb(210, 217, 221); inputbox-focus:LIGHT GREY
+rgb(205, 127, 50); packages:BRONZE
+rgb(192, 192, 192); packages:SILVER
+rgb(218, 165, 32); packages:GOLD
+rgb(26, 26, 26); FAQsaccordion-border
+rgb(38, 38, 38); FAQsaccordion-b.g
+rgb(51, 51, 51); FAQsaccordion-hover
 */
 
 
@@ -19,7 +26,7 @@ Colour Scheme:
 /*-------------------*/
 
 * {
-    color: #FFFFFF;
+    color: rgb(255, 255, 255);
     font-family: 'Quicksand', sans-serif;
     font-weight: lighter;
     text-decoration: none;
@@ -40,7 +47,7 @@ body {
 }
 
 body {
-    background-color: #404040;
+    background-color: rgb(64, 64, 64);
     background-image: url(../images/fitness_10.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -104,14 +111,15 @@ li {
     text-align: left;
 }
 
-.a04{
+.a04 {
     font-weight: bold;
     font-size: 60px;
 }
 
-.a04msg{
+.a04msg {
     font-size: 40px;
 }
+
 
 /*----- Accordion -----*/
 
@@ -124,9 +132,8 @@ li {
 
 .accordion {
     overflow: hidden;
-    ;
     border-radius: 5px;
-    background: #333333;
+    background: rgb(51, 51, 51);
     margin-top: 40px;
 }
 
@@ -137,18 +144,18 @@ li {
     width: 100%;
     padding: 15px;
     display: inline-block;
-    border-bottom: 1px solid #1a1a1a;
-    background: #262626;
+    border-bottom: 1px solid rgb(26, 26, 26);
+    background: rgb(38, 38, 38);
     transition: all linear 0.15s;
     /* Type */
     font-size: 1.200em;
-    text-shadow: 0px 1px 0px #1a1a1a;
-    color: #fff;
+    text-shadow: 0px 1px 0px rgb(26, 26, 26);
+    color: rgb(255, 255, 255);
 }
 
 .accordion-section-title.active,
 .accordion-section-title:hover {
-    background: #333333;
+    background: rgb(51, 51, 51);
     /* Type */
     text-decoration: none;
 }
@@ -313,7 +320,7 @@ li {
 .gmap_canvas {
     height: 400px;
     width: 500px;
-    color: #000
+    color: rgb(0, 0, 0)
 }
 
 #gmap_canvas img {

@@ -6,14 +6,11 @@
     <link href="images/favicon.png" rel="icon" type="image/png" />
     <link href="stylesheets/compleat.css" rel="stylesheet" />
     <link href="stylesheets/nav_bar.css" rel="stylesheet" />
-    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css' />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-
-    <link href="stylesheets/commentbox.css" rel="stylesheet" />
     <link href="stylesheets/slick.css" rel="stylesheet" type="text/css" />
-    <link href="stylesheets/form.css" rel="stylesheet" />
-    <script src="javascripts/instafeed.min.js" type="text/javascript"></script>
-    <script src="javascripts/slick.min.js" type="text/javascript"></script>
+    <link href="stylesheets/commentbox.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css' />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <title>Compleat Fitness</title>
 </head>
 
@@ -79,14 +76,6 @@
             <h1>Nutrition Portfolio and Recipes</h1>
             <p>This page will be home to an Instagram slider which pulls images of food from an Instagram account along with a descripton of the dish. It will also feature a food blog where whole recipes can be posted - this feature will be added for the server side submission.</p>
 
-            <!-- File Upload -->
-            <!--             <h2>Share photos of your meals!</h2><br/>
-            <form action="routes/upload.php" method="post" enctype="multipart/form-data">
-                Select an image to upload:<br/>
-                <input type="file" name="fileToUpload" id="fileToUpload"><br/>
-                <input type="submit" value="Upload Image" name="submit">
-            </form> -->
-
             <!-- Comment Box -->
             <div class="container" ng-controller="AppCtrl">
                 <h2>Share your thoughts and recipes here!</h2>
@@ -94,23 +83,22 @@
                 <table class="commenttable">
                     <thead>
                         <tr>
-                            <th class="col-1">Date and Time</th>
-                            <th class="col-2">Name</th>
-                            <th class="col-3">Comment</th>
-                            <th class="col-4">&nbsp;</th>
+                            <th class="th-1">Date and Time</th>
+                            <th class="th-2">Name</th>
+                            <th class="th-3">Comment</th>
+                            <th class="th-4">&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <td></td>
-                        <td>
-                            <input class="form-control namebox" ng-model="comment.username">
+                        <td class="inputcell"></td>
+                        <td class="inputcell">
+                            <input class="form-control" ng-model="comment.username">
                         </td>
-                        <td>
-                            <textarea class="form-control commentbox" ng-model="comment.usercomment"></textarea>
-
+                        <td class="inputcell">
+                            <textarea class="form-control" ng-model="comment.usercomment"></textarea>
                         </td>
-                        <td>
-                            <button class="btn btn-primary" ng-click="addComment()" type="btn">Post</button>
+                        <td class="inputcell">
+                            <button class="btn" ng-click="addComment()" type="btn">Post</button>
                         </td>
                         </tr>
                         <tr ng-repeat="comment in commentlist | reverse" class="postedcomments">
@@ -125,9 +113,6 @@
             </div>
         </main>
     </div>
-
-    <!-- Instafeed -->
-    <!-- <div id="instafeed" class="instafeed"></div> -->
 
     <!-- Social Media Icons -->
     <div class="social_media_icons">
@@ -147,26 +132,4 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
 <script src="javascripts/nutrition.js"></script>
 
-<script>
-// var feed = new Instafeed({
-//     clientId: 'e0347429fc5548d48ddb0b92cbfbfcbb',
-//     accessToken: '233584328.e034742.88db8c1704d14b11856e3382dba76ad9',
-//     get: 'user',
-//     userId: '233584328',
-//     after: function() {
-//         runSlick();
-//     },
-// });
-// feed.run();
-// function runSlick() {
-//     $('.instafeed').slick({
-//         slidesToShow: 1,
-//         slidesToScroll: 1,
-//         autoplay: true,
-//         autoplaySpeed: 2000,
-//         fade: true,
-//         arrows: false,
-//     });
-// }
-</script>
 </html>

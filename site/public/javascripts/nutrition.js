@@ -3,7 +3,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     console.log("Controller listening");
 
     var refresh = function() {
-        $http.get('/nutrition:id').success(function(response) {
+        $http.get('/postcomment').success(function(response) {
             console.log("I got the data I requested");
             $scope.commentlist = response;
             $scope.comment = "";

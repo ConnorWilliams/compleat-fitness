@@ -25,6 +25,22 @@ var app = express();
 // MongoDB integration
 var mongojs = require('mongojs');
 var db = mongojs('commentlist', ['commentlist']);
+var db_img = mongojs('imgrefs', ['imgrefs']);
+
+// Multer integration
+var multer = require('multer');
+var storage = multer.diskStorage({
+    destination: function(req, file, callback) {
+        callback(null, './public/uploads');
+    },
+    filename: function(req, file, callback) {
+        var name = file.fieldname + '-' + Date.now() + '.jpg';
+        callback(null, name);
+        var refname = 'uploads/' + name;
+        db_img.imgrefs.insert({ imgref: refname });
+    }
+});
+var upload = multer({ storage: storage }).single('userPhoto');
 
 // create reusable transporter object using the default SMTP transport
 var transporter = nodemailer.createTransport('smtps://cojwilliams%40gmail.com:webtechisgr8@smtp.gmail.com');
@@ -37,19 +53,26 @@ app.use(bodyParser());
 /*-------------------------*/
 /*-------- Routing --------*/
 /*-------------------------*/
+
+// Homepage
+
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/views/index.html');
 });
+
+// Packages page
 
 app.get('/packages', function(req, res) {
     res.sendFile(__dirname + '/views/packages.html');
 });
 
+// Nutrition page
+
 app.get('/nutrition', function(req, res) {
     res.sendFile(__dirname + '/views/nutrition.html');
 });
 
-app.get('/nutrition:id', function(req, res) {
+app.get('/postcomment', function(req, res) {
     console.log('I receieved a GET request');
     db.commentlist.find(function(err, docs) {
         console.log(docs);
@@ -64,13 +87,27 @@ app.post('/nutrition', function(req, res) {
     });
 });
 
+// Gallery Page
+
 app.get('/gallery', function(req, res) {
     res.sendFile(__dirname + '/views/gallery.html');
 });
 
+app.post('/gallery', function(req, res) {
+    upload(req, res, function(err) {
+        if (err) {
+            return res.end("Error uploading file.");
+        }
+        res.end("File is uploaded.");
+    });
+});
+
+// Contact page
+
 app.get('/contact', function(req, res) {
     res.sendFile(__dirname + '/views/contact.html');
 });
+
 
 app.post('/send_mail', function(req, res) {
     var send = true;
@@ -83,12 +120,12 @@ app.post('/send_mail', function(req, res) {
         send = false;
     }
 
-    if (!validator.validate(req.body.email)){
+    if (!validator.validate(req.body.email)) {
         res.end('{"resp": "Email address invalid."}');
         send = false;
     }
 
-    if (send==true) {
+    if (send == true) {
         var mailOptions = {
             from: '"' + req.body.firstname + ' ' + req.body.lastname + '" ' + req.body.email, // sender address
             to: 'connor_williams@msn.com', // list of receivers
@@ -105,6 +142,8 @@ app.post('/send_mail', function(req, res) {
         });
     }
 });
+
+// 404 page
 
 app.get('/404', function(req, res) {
     res.sendFile(__dirname + '/views/404.html');

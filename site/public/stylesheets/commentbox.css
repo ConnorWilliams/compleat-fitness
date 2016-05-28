@@ -21,7 +21,8 @@ rgb(51, 51, 51); FAQsaccordion-hover
 
 .container {
     width: 97%;
-    min-width: 500px max-height: 1000px;
+    min-width: 500px;
+    max-height: 1000px;
     padding: 20px;
     background-color: rgba(128, 128, 128, 0.5);
     margin: 10px auto;
@@ -38,14 +39,45 @@ table {
 }
 
 
-/* Columns */
+/* Header cells */
+
+th {
+    font-size: 20px;
+}
+
+
+/* Header cell widths */
+
+.th-1 {
+    width: 13%;
+}
+
+.th-2 {
+    width: 12%;
+}
+
+.th-3 {
+    width: 70%;
+}
+
+.th-4 {
+    width: 5%;
+}
+
+
+/* Standard cells */
 
 td {
-    padding-bottom: 10px;
-    padding-top: 10px;
     border-top: thin solid;
     word-wrap: break-word;
-    height: 50px;
+}
+
+
+/* Input cells */
+
+td.inputcell {
+    vertical-align: top;
+    height: 20px;
 }
 
 
@@ -55,29 +87,7 @@ tr {
     font-size: 18px;
     text-align: left;
     width: 100%;
-}
-
-
-/* Column widths & heading size */
-
-.col-1 {
-    width: 13%;
-    font-size: 20px;
-}
-
-.col-2 {
-    width: 12%;
-    font-size: 20px;
-}
-
-.col-3 {
-    width: 70%;
-    font-size: 20px;
-}
-
-.col-4 {
-    width: 4%;
-    font-size: 20px;
+    white-space: pre-line;
 }
 
 
@@ -111,8 +121,8 @@ tr {
     padding-bottom: 5px;
     text-align: left;
     border-radius: 4px;
-    width: 100%;
-    height: 33px;
+    width: 90%;
+    height: 23px;
 }
 
 

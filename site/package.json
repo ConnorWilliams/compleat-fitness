@@ -18,6 +18,13 @@
     "morgan": "~1.5.3",
     "serve-favicon": "~2.2.1",
     "mongodb": "^1.4.4",
-    "monk": "^1.0.1"
+    "monk": "^1.0.1",
+    "express": "4.13.3",
+    "multer": "1.1.0"
+  },
+    "devDependencies": {
+    "should": "~7.1.0",
+    "mocha": "~2.3.3",
+    "supertest": "~1.1.0"
   }
 }

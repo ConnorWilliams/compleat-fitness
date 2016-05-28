@@ -45,29 +45,26 @@ var upload = multer({ storage: storage }).single('userPhoto');
 // create reusable transporter object using the default SMTP transport
 var transporter = nodemailer.createTransport('smtps://cojwilliams%40gmail.com:webtechisgr8@smtp.gmail.com');
 
-app.use(negotiate);
 app.use(express.static(path.join(__dirname, '/public'), { setHeaders: deliverXHTML }));
-app.use(validate);
 app.use(bodyParser());
+app.use(negotiate);
+app.use(validate);
 
 /*-------------------------*/
 /*-------- Routing --------*/
 /*-------------------------*/
 
 // Homepage
-
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/views/index.html');
 });
 
 // Packages page
-
 app.get('/packages', function(req, res) {
     res.sendFile(__dirname + '/views/packages.html');
 });
 
 // Nutrition page
-
 app.get('/nutrition', function(req, res) {
     res.sendFile(__dirname + '/views/nutrition.html');
 });
@@ -88,7 +85,6 @@ app.post('/nutrition', function(req, res) {
 });
 
 // Gallery Page
-
 app.get('/gallery', function(req, res) {
     res.sendFile(__dirname + '/views/gallery.html');
 });
@@ -103,11 +99,9 @@ app.post('/gallery', function(req, res) {
 });
 
 // Contact page
-
 app.get('/contact', function(req, res) {
     res.sendFile(__dirname + '/views/contact.html');
 });
-
 
 app.post('/send_mail', function(req, res) {
     var send = true;
@@ -134,17 +128,21 @@ app.post('/send_mail', function(req, res) {
         };
 
         // send mail with defined transport object
-        transporter.sendMail(mailOptions, function(error, info) {
-            if (error) {
-                return console.log(error);
-            }
-            res.end('{"resp": "Message sent!", "success":"true"}');
-        });
+        // transporter.sendMail(mailOptions, function(error, info) {
+        //     if (error) {
+        //         return console.log(error);
+        //     }
+        //     res.end('{"resp": "Message sent!", "success":"true"}');
+        // });
+
+        if(req.body.subscribe=="true"){
+            console.log("Please add "+req.body.email+" to the mailing list.");
+        }
+
     }
 });
 
 // 404 page
-
 app.get('/404', function(req, res) {
     res.sendFile(__dirname + '/views/404.html');
 });
@@ -166,6 +164,7 @@ function deliverXHTML(res, path, stat) {
     }
 }
 
+// Server side URL validation.
 function validate(req, res, next) {
     var url = req.originalUrl;
     var valid = true;
@@ -173,9 +172,7 @@ function validate(req, res, next) {
     if (!starts(url, "/")) valid = false;
     if (url.indexOf("//") >= 0) valid = false;
     if (url.indexOf("/.") >= 0) valid = false;
-    // if (url.lastIndexOf(".") < url.lastIndexOf("/")) valid = false;
     if (ends(url, "..")) valid = false;
-    console.log(url, valid);
     if (valid == false) res.redirect('/404');
     next();
 }
@@ -184,7 +181,6 @@ function validate(req, res, next) {
 function starts(s, x) {
     return s.lastIndexOf(x, 0) == 0;
 }
-
 function ends(s, x) {
     return s.indexOf(x, s.length - x.length) >= 0;
 }

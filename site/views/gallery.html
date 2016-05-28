@@ -76,7 +76,9 @@
         <main>
             <!-- Instafeed -->
             <h1>My Instagram</h1>
-            <!-- <div id="instafeed" class="instafeed"></div> -->
+            <div class="insta_wrapper">
+                <div id="instafeed" class="instafeed"></div>
+            </div>
 
             <!-- File Upload -->
             <h1>Share photos of your meals and progress!</h1>
@@ -120,6 +122,7 @@
         accessToken: '233584328.e034742.88db8c1704d14b11856e3382dba76ad9',
         get: 'user',
         userId: '233584328',
+        template: '<img src="{{model.images.standard_resolution.url}}"/>',
         after: function() {
             runSlick();
         },

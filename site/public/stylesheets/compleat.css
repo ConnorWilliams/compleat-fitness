@@ -285,10 +285,23 @@ li {
 /*-------------------*/
 
 .instafeed {
-    width: 150px;
-    margin: auto;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    padding: 30px;
+    width: 50%;
+    max-width: 400px;
+    /*margin: auto;*/
+    float: left;
 }
 
+.insta_wrapper{
+    max-width: 100%;
+    overflow: hidden;
+}
+
+img{
+    vertical-align:middle;
+}
 /*-------------------*/
 
 

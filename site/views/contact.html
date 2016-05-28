@@ -108,7 +108,7 @@
                 <textarea name="message" id="message" rows="8" cols="50" placeholder="Your message here" title="message" required></textarea>
                 <br/>
                 <label>
-                    <input type="checkbox" name="email" value="email" /> Tick if you would like to receive the odd email. You can unsubscribe at any point.
+                    <input type="checkbox" name="subscribe" id="subscribe" checked/> Tick if you would like to receive the odd email. You can unsubscribe at any point.
                 </label>
                 <input type="button" value="Send" onclick="send_mail()"/>
             </form>
@@ -137,15 +137,15 @@
         var ln = document.getElementById("lastname").value
         var eml = document.getElementById("email").value
         var msg = document.getElementById("message").value
+        var sub = document.getElementById("subscribe").checked;
         $.ajax({
             type: 'POST',
             url: '/send_mail',
             dataType: "json",
-            data: {firstname:fn, lastname:ln, email:eml, message:msg},
+            data: {firstname:fn, lastname:ln, email:eml, message:msg, subscribe:sub},
             success: function(result){
                 document.getElementById("feedback").innerHTML=result.resp;
                 if (result.success){
-                    console.log("Sent it man")
                     document.getElementById("firstname").value='';
                     document.getElementById("lastname").value='';
                     document.getElementById("email").value='';

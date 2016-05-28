@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/png" href="site/public/images/favicon.png"/>
+    <link href="report.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'/>
+
+    <title>Report</title>
+</head>
+
+<body>
+    <h1>Freddie Caira (fc13...) and Connor Williams (cw13121)</h1>
+    <a href="report_client.html">CLICK HERE for Client Side Report</a>
+    <h1>Server Side Report</h1>
+
+    <ul>
+        <li>
+            After researching different server side techniques, the technologies we have decided to use for our server side are ExpressJS and MongoDB which seem to be a popular choice in industry today.
+        </li>
+    </ul>
+
+    <h2> General </h2>
+    <ul>
+        <li>
+            Server component and general server issues.
+            <ul>
+                <li>
+                    Express Server, yo.
+                </li>
+            </ul>
+        </li><li>
+            Database Integration.
+            <ul>
+                <li>
+                    MongoDB, yo.
+                </li>
+            </ul>
+        </li><li>
+            Programming.
+            <ul>
+                <li>
+                    All the programmings, YO.
+                </li>
+            </ul>
+        </li><li>
+            Sophistication or ingenuity or creativity or polish or whatever.
+            <ul>
+                <li>
+                    All polish welcome, y0.
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    Unfortunately, index.html and packages.html have no server side functionality.
+
+    <h2>nutrition.html:</h2>
+    <ul>
+        <li>
+            Comments section.
+        </li>
+    </ul>
+
+    <h2>gallery.html:</h2>
+    <ul>
+        <li>
+            Image Uploads.
+        </li>
+    </ul>
+
+    <h2>contact.html:</h2>
+    <ul>
+        <li>
+            Contact form automatically sends the message as an email to an email address specified in the server. This is done by the 'Send' button which when clicked, calls a client side javascript function. This javascript function uses AJAX to make a send_mail POST request to the server which in turn uses <a href="https://nodemailer.com">Nodemailer</a> to send the email. To use Nodemailer, a reuseable transport object is created which establishes a connection with the SMTP server (GMail in our case) which can then be used to send the emails.
+        </li><li>
+            Form input is validated on the server side before sending the email.
+        </li><li>
+            If the tick box is checked, the email address used in the form is added to a database for any future marketing emails.
+        </li>
+    </ul>
+
+        <h2> References </h2>
+    <ul>
+        <li>
+            Mongo tutorial: <a href="http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/">cwbuecheler</a>
+        </li>
+    </ul>
+</body>
+</html>

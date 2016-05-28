@@ -71,7 +71,6 @@ app.get('/nutrition', function(req, res) {
 });
 
 app.get('/postcomment', function(req, res) {
-    console.log('I receieved a GET request');
     db.commentlist.find(function(err, docs) {
         console.log(docs);
         res.json(docs);
@@ -91,7 +90,6 @@ app.get('/gallery', function(req, res) {
 });
 
 app.get('/fetchsource', function(req, res) {
-    console.log('I received a GET request');
     db_img.imgrefs.find(function(err, docs) {
         console.log(docs);
         res.json(docs);
@@ -208,5 +206,5 @@ function ends(s, x) {
 /*---------------------------*/
 
 app.listen(8081, function() {
-    console.log('Express started on port 8081');
+    console.log('Visit http://localhost:8081');
 });

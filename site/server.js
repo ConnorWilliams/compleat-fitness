@@ -205,5 +205,5 @@ function ends(s, x) {
 /*---------------------------*/
 
 app.listen(8081, function() {
-    console.log('Express started on port 8081');
+    console.log('Visit http://localhost:8081');
 });

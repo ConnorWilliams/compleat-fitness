@@ -102,10 +102,11 @@ app.post('/gallery', function(req, res) {
     upload(req, res, function(err) {
         if (err) {
             console.log(err);
-            res.json('{"resp: "Upload failed!", "success":"false"}');
+            // return res.json('{"resp": "Upload failed!", "success":"false"}');
         }
+        console.log("SERVER.JS IMAGE UPLOADED");
+        // return res.json('{"resp": "Image uploaded!", "success":"true"}');
     });
-    res.json('{"resp": "Image uploaded!", "success":"true"}');
 });
 
 // Contact page

@@ -10,20 +10,21 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
         });
     };
 
-    var uploadImg = function() {
+    refresh();
+
+    $scope.uploadImg = function() {
         $http.post('/gallery').success(function(response) {
-            if(response.success){
-                console.log(response);
-                console.log("Image successfully uploaded");
-                // refresh();
-            } else {
-                console.log("Image upload failed!");
-            }
-            // $scope.response = response.resp;
+            console.log(response);
+            refresh();
+            // console.log("gallery.js Image successfully uploaded");
+            // console.log("gallery.js Image upload failed!");
+            // if(response.success){
+            // } else {
+            // }
+            // refresh();
+            // $scope.upload_resp = response.resp;
         });
     };
-
-    refresh();
 
 }]);﻿
 

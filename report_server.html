@@ -1,51 +1,50 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
+
 <head>
-    <meta charset="UTF-8"/>
-    <link rel="icon" type="image/png" href="site/public/images/favicon.png"/>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="site/public/images/favicon.png" />
     <link href="report.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css' />
 
     <title>Report</title>
 </head>
 
 <body>
-    <h1>Freddie Caira (fc13...) and Connor Williams (cw13121)</h1>
+    <h1>Freddie Caira (fc13260) and Connor Williams (cw13121)</h1>
     <a href="report_client.html">CLICK HERE for Client Side Report</a>
-    <h1>Server Side Report</h1>
-
-    <ul>
-        <li>
-            After researching different server side techniques, the technologies we have decided to use for our server side are ExpressJS and MongoDB which seem to be a popular choice in industry today.
-        </li>
-    </ul>
+    <h1>Server Side Report</h1> On researching various server side techniques, we decided to use the MEAN JavaScript software stack, which is a popular choice in modern industry due to its flexible simplicity and use of JavaScript throughout.
+    <br/> This was our choice primarily for the use of ExpressJS and MongoDB, but we ended up using AngularJS as well.
 
     <h2> General </h2>
     <ul>
         <li>
-            Server component and general server issues.
+            Server component and general server issues
             <ul>
                 <li>
                     Express Server, yo.
                 </li>
             </ul>
-        </li><li>
-            Database Integration.
+        </li>
+        <li>
+            Database Integration
             <ul>
                 <li>
-                    MongoDB, yo.
+                    We integrated MongoDB by using mongojs, which is a node.js module that emulates the official API as much as possible. We integrated three Mongo collections: to hold 1) comments, 2) an email subscription list, and 3) the URL references for uploaded images. See below for more detail.
                 </li>
             </ul>
-        </li><li>
-            Programming.
+        </li>
+        <li>
+            Programming
             <ul>
                 <li>
                     All the programmings, YO.
                 </li>
             </ul>
-        </li><li>
-            Sophistication or ingenuity or creativity or polish or whatever.
+        </li>
+        <li>
+            Sophistication or ingenuity or creativity or polish or whatever
             <ul>
                 <li>
                     All polish welcome, y0.
@@ -54,19 +53,37 @@
         </li>
     </ul>
 
-    Unfortunately, index.html and packages.html have no server side functionality.
+    The homepage (index.html) and packages page (packages.html) views are served via the JavaScript server, but have no additional server side functionality.
 
     <h2>nutrition.html:</h2>
     <ul>
         <li>
-            Comments section.
+            The comments section is intended for use by visitors to share recipes and their experiences of the site.
+        </li>
+        <li>
+            On the click of the post button, the name and comment are retrieved from the HTML.
+        </li>
+        <li>
+            Both fields are checked: if they are invalid, empty, or the name is more than ten characters, a paragraph tag is updated to alert the user.
+        </li>
+        <li>
+            If the fields are valid, the current time is appended to the object, and a post is made to server.js.
         </li>
     </ul>
 
     <h2>gallery.html:</h2>
     <ul>
         <li>
-            Image Uploads.
+            We wanted users of the website to be able to upload photos of their meals and progress.
+        </li>
+        <li>
+            The Multer middleware is used in server.js to upload each photo (first renaming it using the current date and time) to a local 'public/uploads/' directory.
+        </li>
+        <li>
+            After upload, the image path is inserted into a Mongo database, 'imgrefs'.
+        </li>
+        <li>
+            The AngularJS directive 'ng-repeat' is used to retrieve each reference in the database and display it in an image tag, resulting in a gallery of uploaded photos.
         </li>
     </ul>
 
@@ -74,18 +91,21 @@
     <ul>
         <li>
             Contact form automatically sends the message as an email to an email address specified in the server. This is done by the 'Send' button which when clicked, calls a client side javascript function. This javascript function uses AJAX to make a send_mail POST request to the server which in turn uses <a href="https://nodemailer.com">Nodemailer</a> to send the email. To use Nodemailer, a reuseable transport object is created which establishes a connection with the SMTP server (GMail in our case) which can then be used to send the emails.
-        </li><li>
+        </li>
+        <li>
             Form input is validated on the server side before sending the email.
-        </li><li>
+        </li>
+        <li>
             If the tick box is checked, the email address used in the form is added to a database for any future marketing emails.
         </li>
     </ul>
 
-        <h2> References </h2>
+    <h2> References </h2>
     <ul>
         <li>
             Mongo tutorial: <a href="http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/">cwbuecheler</a>
         </li>
     </ul>
 </body>
+
 </html>

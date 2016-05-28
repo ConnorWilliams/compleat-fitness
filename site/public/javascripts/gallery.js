@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', ['angular.filter']);
 myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     console.log("Controller listening");
 
@@ -12,8 +12,14 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 
     var uploadImg = function() {
         $http.post('/gallery').success(function(response) {
-            console.log("Image successfully uploaded");
-            refresh();
+            if(response.success){
+                console.log(response);
+                console.log("Image successfully uploaded");
+                // refresh();
+            } else {
+                console.log("Image upload failed!");
+            }
+            // $scope.response = response.resp;
         });
     };
 

@@ -1,257 +1,211 @@
- // Run a node.js web server for local development of a static web site.
- // Put this program in a site folder and start with "node server.js".
- // Then visit the site at the address printed on the console.
- // The server is configured to encourage portable web sites.
- // In particular, URLs are lower cased so the server is case insensitive even
- // on Linux, and paths containing upper case letters are banned so that the
- // file system is treated as case sensitive, even on Windows.
+"use strict";
 
- // Load the library modules, and define the response codes:
- // see http://en.wikipedia.org/wiki/List_of_HTTP_status_codes.
- // Define the list of banned urls, and the table of file types, and run tests.
- // Then start the server on the given port: use the default 80, or use 8080 to
- // avoid privilege or port number clash problems or to add firewall protection.
- var http = require('http');
- var fs = require('fs');
- var OK = 200,
-     NotFound = 404,
-     BadType = 415,
-     Error = 500;
- var banned = defineBanned();
- var types = defineTypes();
- test();
- start(8080);
+// An express-based server demonstrating content negotiation.  The built-in
+// 'static' middleware is used to deliver static files.  'Static' has an option
+// to provide a function to set custom response headers.  That function is not
+// passed the request as an argument, so you can't do content negotiation at
+// that point.  Instead, content negotiation is split into two steps.
+//
+// First, the 'negotiate' function is installed as middleware, to be called on
+// every request before 'static'.  It checks whether the browser accepts XHTML,
+// and if so adds a flag to the response object.  It is not a good idea to check
+// whether the request is for a '.html' file at that point, because the URL
+// hasn't yet been processed.  Second, the 'deliverXHTML' function is installed
+// as an option, so that 'static' calls it when it is ready to deliver the file.
+// It checks that the file is html, and checks the 'accepts XHTML' flag and, if
+// both are true, it sets the content type.
 
- // Start the http service.  Accept only requests from localhost, for security.
- // Print out the server address to visit.
- function start(port) {
-     var httpService = http.createServer(handle);
-     httpService.listen(port, 'localhost');
-     var address = "http://localhost";
-     if (port != 80) address = address + ":" + port;
-     console.log("Server running at", address);
- }
+var express = require('express');
+var path = require('path');
+var nodemailer = require("nodemailer");
+var bodyParser = require('body-parser');
+var validator = require("email-validator");
+var app = express();
 
- // Serve a request.  Process and validate the url, then deliver the file.
- function handle(request, response) {
-     var url = request.url;
-     url = removeQuery(url);
-     url = lower(url);
-     url = addIndex(url);
-     if (!valid(url)) return fail(response, NotFound, "Invalid URL");
-     if (!safe(url)) return fail(response, NotFound, "Unsafe URL");
-     if (!open(url)) return fail(response, NotFound, "URL has been banned");
-     var type = findType(url);
-     if (type == null) return fail(response, BadType, "File type unsupported");
-     if (type == "text/html") type = negotiate(request.headers.accept);
-     reply(response, url, type);
- }
+// MongoDB integration
+var mongojs = require('mongojs');
+var db = mongojs('commentlist', ['commentlist']);
+var db_img = mongojs('imgrefs', ['imgrefs']);
+var db_emails = mongojs('emaillist', ['emaillist']);
 
- // Remove the query part of a url.
- function removeQuery(url) {
-     var n = url.indexOf('?');
-     if (n >= 0) url = url.substring(0, n);
-     return url;
- }
+// Multer integration
+var multer = require('multer');
+var storage = multer.diskStorage({
+    destination: function(req, file, callback) {
+        callback(null, './public/uploads');
+    },
+    filename: function(req, file, callback) {
+        var name = file.fieldname + '-' + Date.now() + '.jpg';
+        callback(null, name);
+        var refname = 'uploads/' + name;
+        db_img.imgrefs.insert({ imgref: refname });
+    }
+});
+var upload = multer({ storage: storage }).single('userPhoto');
 
- // Make the url lower case, so the server is case insensitive, even on Linux.
- function lower(url) {
-     return url.toLowerCase();
- }
+// create reusable transporter object using the default SMTP transport
+var transporter = nodemailer.createTransport('smtps://cojwilliams%40gmail.com:webtechisgr8@smtp.gmail.com');
 
- // If the url ends with / add index.html.
- function addIndex(url) {
-     if (ends(url, '/')) url = url + "index.html";
-     return url;
- }
+app.use(express.static(path.join(__dirname, '/public'), { setHeaders: deliverXHTML }));
+app.use(bodyParser());
+app.use(negotiate);
+app.use(validate);
 
- // Validate the URL.  It must start with / and not contain /. or // so
- // that /../ and /./ and file or folder names starting with dot are excluded.
- // Also a final name with no extension is rejected.
- function valid(url) {
-     console.log(url);
-     if (!starts(url, "/")) return false;
-     if (url.indexOf("//") >= 0) return false;
-     if (url.indexOf("/.") >= 0) return false;
-     if (ends(url, "/")) return true;
-     if (url.lastIndexOf(".") < url.lastIndexOf("/")) return false;
-     return true;
- }
+/*-------------------------*/
+/*-------- Routing --------*/
+/*-------------------------*/
 
- // Restrict the url to visible ascii characters, excluding control characters,
- // spaces, and unicode characters beyond ascii.  Such characters aren't
- // technically illegal, but (a) need to be escaped which causes confusion for
- // users and (b) can be a security risk.
- function safe(url) {
-     var spaceCode = 32,
-         deleteCode = 127;
-     if (url.length > 1000) return false;
-     for (var i = 0; i < url.length; i++) {
-         var code = url.charCodeAt(i);
-         if (code > spaceCode && code < deleteCode) continue;
-         return false;
-     }
-     return true;
- }
+// Homepage
+app.get('/', function(req, res) {
+    res.sendFile(__dirname + '/views/index.html');
+});
 
- // Protect any resources which shouldn't be delivered to the browser.
- function open(url) {
-     for (var i = 0; i < banned.length; i++) {
-         var ban = banned[i];
-         if (url == ban || ends(ban, "/") && starts(url, ban)) {
-             return false;
-         }
-     }
-     return true;
- }
+// Packages page
+app.get('/packages', function(req, res) {
+    res.sendFile(__dirname + '/views/packages.html');
+});
 
- // Find the content type to respond with, or undefined.
- function findType(url) {
-     var dot = url.lastIndexOf(".");
-     var extension = url.substring(dot);
-     return types[extension];
- }
+// Nutrition page
+app.get('/nutrition', function(req, res) {
+    res.sendFile(__dirname + '/views/nutrition.html');
+});
 
- // Do content negotiation, assuming all pages on the site are XHTML and
- // suitable for dual delivery.  Check whether the browser claims to accept the
- // XHTML type and, if so, use that instead of the HTML type.
- function negotiate(accept) {
-     var htmlType = "text/html";
-     var xhtmlType = "application/xhtml+xml";
-     var accepts = accept.split(",");
-     if (accepts.indexOf(xhtmlType) >= 0) return xhtmlType;
-     else return htmlType;
- }
+app.get('/postcomment', function(req, res) {
+    console.log('I receieved a GET request');
+    db.commentlist.find(function(err, docs) {
+        console.log(docs);
+        res.json(docs);
+    });
+});
 
- // Read and deliver the url as a file within the site.
- function reply(response, url, type) {
-     var file = "." + url;
-     fs.readFile(file, deliver.bind(null, response, type));
- }
+app.post('/nutrition', function(req, res) {
+    console.log(req.body);
+    db.commentlist.insert(req.body, function(err, doc) {
+        res.json(doc);
+    });
+});
 
- // Deliver the file that has been read in to the browser.
- function deliver(response, type, err, content) {
-     if (err) return fail(response, NotFound, "File not found");
-     var typeHeader = {
-         'Content-Type': type
-     };
-     response.writeHead(OK, typeHeader);
-     response.write(content);
-     response.end();
- }
+// Gallery Page
+app.get('/gallery', function(req, res) {
+    res.sendFile(__dirname + '/views/gallery.html');
+});
 
- // Give a minimal failure response to the browser
- function fail(response, code, text) {
-     var textTypeHeader = {
-         'Content-Type': 'text/plain'
-     };
-     response.writeHead(code, textTypeHeader);
-     response.write(text, 'utf8');
-     response.end();
- }
+app.get('/fetchsource', function(req, res) {
+    console.log('I received a GET request');
+    db_img.imgrefs.find(function(err, docs) {
+        console.log(docs);
+        res.json(docs);
+    });
+});
 
- // Check whether a string starts with a prefix, or ends with a suffix.  (The
- // starts function uses a well-known efficiency trick.)
- function starts(s, x) {
-     return s.lastIndexOf(x, 0) == 0;
- }
+app.post('/gallery', function(req, res) {
+    upload(req, res, function(err) {
+        if (err) {
+            console.log(err);
+            res.json('{"resp: "Upload failed!", "success":"false"}');
+        }
+    });
+    res.json('{"resp": "Image uploaded!", "success":"true"}');
+});
 
- function ends(s, x) {
-     return s.indexOf(x, s.length - x.length) >= 0;
- }
+// Contact page
+app.get('/contact', function(req, res) {
+    res.sendFile(__dirname + '/views/contact.html');
+});
 
- // Avoid delivering the server source file.  Also call banUpperCase.
- function defineBanned() {
-     var banned = ["/server.js"];
-     banUpperCase(".", banned);
-     return banned;
- }
+app.post('/send_mail', function(req, res) {
+    var send = true;
+    if (req.body.spamcatcher) {
+        send = false;
+    }
 
- // Check a folder for files/subfolders with non-lowercase names.  Add them to
- // the banned list so they don't get delivered, making the site case sensitive,
- // so that it can be moved from Windows to Linux, for example. Synchronous I/O
- // is used because this function is only called during startup.  This avoids
- // expensive file system operations during normal execution.  A file with a
- // non-lowercase name added while the server is running will get delivered, but
- // it will be detected and banned when the server is next restarted.
- function banUpperCase(folder, banned) {
-     var folderBit = 1 << 14;
-     var names = fs.readdirSync(folder);
-     for (var i = 0; i < names.length; i++) {
-         var name = names[i];
-         var file = folder + "/" + name;
-         if (name != name.toLowerCase()) {
-             banned.push(file.substring(1));
-         }
-         var mode = fs.statSync(file).mode;
-         if ((mode & folderBit) == 0) continue;
-         banUpperCase(file, banned);
-     }
- }
+    if (!req.body.firstname || !req.body.lastname || !req.body.message) {
+        res.end('{"resp": "Please fill in all fields!"}');
+        send = false;
+    }
 
- // The most common standard file extensions are supported.
- // Some common non-standard file extensions are explicitly excluded.
- // This table is defined using a function rather than just a global variable,
- // because otherwise the table would have to appear before calling start().
- function defineTypes() {
-     return {
-         '.html': 'text/html', // old browsers only, see negotiate
-         '.css': 'text/css',
-         '.js': 'application/javascript',
-         '.png': 'image/png',
-         '.gif': 'image/gif', // for images copied unchanged
-         '.jpeg': 'image/jpeg', // for images copied unchanged
-         '.jpg': 'image/jpeg', // for images copied unchanged
-         '.svg': 'image/svg+xml',
-         '.json': 'application/json',
-         '.pdf': 'application/pdf',
-         '.txt': 'text/plain',
-         '.ttf': 'application/x-font-ttf',
-         '.aac': 'audio/aac',
-         '.mp3': 'audio/mpeg',
-         '.mp4': 'video/mp4',
-         '.webm': 'video/webm',
-         '.ico': 'image/x-icon', // just for favicon.ico
-         '.xhtml': undefined, // not suitable for dual delivery, use .html
-         '.htm': undefined, // non-standard, use .html
-         '.rar': undefined, // non-standard, platform dependent, use .zip
-         '.doc': undefined, // non-standard, platform dependent, use .pdf
-         '.docx': undefined, // non-standard, platform dependent, use .pdf
-     }
- }
+    if (!validator.validate(req.body.email)) {
+        res.end('{"resp": "Email address invalid."}');
+        send = false;
+    }
 
- // Test the server's logic, and make sure there's an index file.
- function test() {
-     check(removeQuery("/index.html?x=1"), "/index.html");
-     check(lower("/index.html"), "/index.html");
-     check(lower("/INDEX.HTML"), "/index.html");
-     check(addIndex("/index.html"), "/index.html");
-     check(addIndex("/admin/"), "/admin/index.html");
-     check(valid("/index.html"), true);
-     check(valid("../x"), false, "urls must start with /");
-     check(valid("/x/../y"), false, "urls must not contain /../");
-     check(valid("/x//y"), false, "urls must not contain //");
-     check(valid("/x/./y"), false, "urls must not contain /./");
-     check(valid("/.txt"), false, "urls must not contain /.");
-     check(valid("/x"), false, "filenames must have extensions");
-     check(safe("/index.html"), true);
-     check(safe("/\n/"), false);
-     check(safe("/x y/"), false);
-     check(open("/index.html"), true);
-     check(open("/server.js"), false);
-     check(findType("/x.txt"), "text/plain");
-     check(findType("/x"), undefined);
-     check(findType("/x.abc"), undefined);
-     check(findType("/x.htm"), undefined);
-     check(negotiate("xxx,text/html"), "text/html");
-     check(negotiate("xxx,application/xhtml+xml"), "application/xhtml+xml");
-     check(fs.existsSync('./index.html'), true, "site contains no index.html");
- }
+    if (send == true) {
+        var mailOptions = {
+            from: '"' + req.body.firstname + ' ' + req.body.lastname + '" ' + req.body.email, // sender address
+            to: 'connor_williams@msn.com', // list of receivers
+            subject: 'Message from ' + req.body.email, // Subject line
+            text: req.body.message, // plaintext body
+        };
 
- function check(x, out, message) {
-     if (x == out) return;
-     if (message) console.log("Test failed:", message);
-     else console.log("Test failed: Expected", out, "Actual:", x);
-     console.trace();
-     process.exit(1);
- }
+        if (req.body.subscribe == "true") {
+            db_emails.emaillist.find({ emailaddr: req.body.email }).count(function(err, docs) {
+                if (docs > 0) {
+                    console.log("Email " + req.body.email + " already in database!");
+                } else {
+                    db_emails.emaillist.insert({ emailaddr: req.body.email }, function(err, docs) {});
+                    console.log("Email " + req.body.email + " added to database!");
+                }
+            });
+        }
+
+        // send mail with defined transport object
+        transporter.sendMail(mailOptions, function(error, info) {
+            if (error) {
+                return console.log(error);
+            }
+            res.end('{"resp": "Message sent!", "success":"true"}');
+        });
+    }
+});
+
+// 404 page
+app.get('/404', function(req, res) {
+    res.sendFile(__dirname + '/views/404.html');
+});
+
+/*---------------------------*/
+/*-------- Functions --------*/
+/*---------------------------*/
+// Check whether the browser accepts XHTML, and record it in the response.
+function negotiate(req, res, next) {
+    var accepts = req.headers.accept.split(",");
+    if (accepts.indexOf("application/xhtml+xml") >= 0) res.acceptsXHTML = true;
+    next();
+}
+
+// Called by express.static.  Delivers response as XHTML when appropriate.
+function deliverXHTML(res, path, stat) {
+    if (ends(path, '.html') && res.acceptsXHTML) {
+        res.header("Content-Type", "application/xhtml+xml");
+    }
+}
+
+// Server side URL validation.
+function validate(req, res, next) {
+    var url = req.originalUrl;
+    var valid = true;
+    if (ends(url, "/")) valid = true;
+    if (!starts(url, "/")) valid = false;
+    if (url.indexOf("//") >= 0) valid = false;
+    if (url.indexOf("/.") >= 0) valid = false;
+    if (ends(url, "..")) valid = false;
+    if (valid == false) res.redirect('/404');
+    next();
+}
+// Check whether a string starts with a prefix, or ends with a suffix.  (The
+// starts function uses a well-known efficiency trick.)
+function starts(s, x) {
+    return s.lastIndexOf(x, 0) == 0;
+}
+
+function ends(s, x) {
+    return s.indexOf(x, s.length - x.length) >= 0;
+}
+
+/*---------------------------*/
+/*-------- Listening --------*/
+/*---------------------------*/
+
+app.listen(8081, function() {
+    console.log('Express started on port 8081');
+});

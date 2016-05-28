@@ -101,12 +101,11 @@ app.get('/fetchsource', function(req, res) {
 app.post('/gallery', function(req, res) {
     upload(req, res, function(err) {
         if (err) {
-            console,
-            log(err);
-            // return res.end("Error uploading file.");
+            console.log(err);
+            res.json('{"resp: "Upload failed!", "success":"false"}');
         }
-        // res.end("File is uploaded.");
     });
+    res.json('{"resp": "Image uploaded!", "success":"true"}');
 });
 
 // Contact page

@@ -36,3 +36,28 @@ myApp.filter('reverse', function() {
         return items.slice().reverse();
     };
 });
+
+function instafeeder() {
+    var feed = new Instafeed({
+        clientId: 'e0347429fc5548d48ddb0b92cbfbfcbb',
+        accessToken: '233584328.e034742.88db8c1704d14b11856e3382dba76ad9',
+        get: 'user',
+        userId: '233584328',
+        template: '<img src="{{model.images.standard_resolution.url}}"/>',
+        after: function() {
+            runSlick();
+        },
+    });
+    feed.run();
+}
+
+function runSlick() {
+    $('.instafeed').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        fade: true,
+        arrows: false,
+    });
+}

@@ -1,3 +1,4 @@
 site/data/
 site/start.sh
 site/node_modules/
+site/public/uploads/

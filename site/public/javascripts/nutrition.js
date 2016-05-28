@@ -18,18 +18,10 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     var dd = today.getDate();
     var mm = today.getMonth() + 1;
     var yyyy = today.getFullYear();
-    if (hr < 10) {
-        hr = '0' + hr
-    }
-    if (min < 10) {
-        min = '0' + min
-    }
-    if (dd < 10) {
-        dd = '0' + dd
-    }
-    if (mm < 10) {
-        mm = '0' + mm
-    }
+    if (hr < 10) { hr = '0' + hr; }
+    if (min < 10) { min = '0' + min; }
+    if (dd < 10) { dd = '0' + dd; }
+    if (mm < 10) { mm = '0' + mm; }
     var today = hr + ':' + min + ' ' + dd + '/' + mm + '/' + yyyy;
 
     $scope.addComment = function() {

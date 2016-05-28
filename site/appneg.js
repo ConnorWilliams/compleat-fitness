@@ -93,12 +93,21 @@ app.get('/gallery', function(req, res) {
     res.sendFile(__dirname + '/views/gallery.html');
 });
 
+app.get('/fetchsource', function(req, res) {
+    console.log('I received a GET request');
+    db_img.imgrefs.find(function(err, docs) {
+        console.log(docs);
+        res.json(docs);
+    });
+});
+
 app.post('/gallery', function(req, res) {
     upload(req, res, function(err) {
         if (err) {
-            return res.end("Error uploading file.");
+            console,log(err);
+            // return res.end("Error uploading file.");
         }
-        res.end("File is uploaded.");
+        // res.end("File is uploaded.");
     });
 });
 
@@ -107,7 +116,6 @@ app.post('/gallery', function(req, res) {
 app.get('/contact', function(req, res) {
     res.sendFile(__dirname + '/views/contact.html');
 });
-
 
 app.post('/send_mail', function(req, res) {
     var send = true;

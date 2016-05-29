@@ -52,6 +52,7 @@ app.get('/packages', function(req, res) {
     res.sendFile(__dirname + '/views/packages.html');
 });
 
+
 // Nutrition page
 app.get('/nutrition', function(req, res) {
     res.sendFile(__dirname + '/views/nutrition.html');

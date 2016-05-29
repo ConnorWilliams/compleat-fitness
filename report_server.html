@@ -33,7 +33,7 @@
                     Content negotiation.
                 </li>
                 <li>
-                    Server side form input validation.
+                    Server side form input validation - including a spam catcher.
                 </li>
             </ul>
         </li>
@@ -55,21 +55,13 @@
             Programming
             <ul>
                 <li>
-                    Both of us knew very little about server side technologies so this was a challenge at first.
-                </li>
-            </ul>
-        </li>
-        <li>
-            Sophistication or ingenuity or creativity or polish or whatever
-            <ul>
-                <li>
-                    All polish welcome, y0.
+                    Both of us knew very little about server side technologies so this was a challenge at first, however after spending plenty of time following the express documentation, we both got the grip of it and managed to use it well.
                 </li>
             </ul>
         </li>
     </ul>
 
-    The homepage (index.html) and packages page (packages.html) views are served via the JavaScript server, but have no additional server side functionality.
+    The homepage (index.html) and packages page (packages.html) views are served via the Express server, but have no additional server side functionality.
 
     <h2>nutrition.html:</h2>
     <ul>
@@ -77,13 +69,13 @@
             The comments section is intended for use by visitors to share recipes and their experiences of the site.
         </li>
         <li>
-            On the click of the post button, the name and comment are retrieved from the HTML.
+            On the click of the post button, THE ANGULAR ADDCOMMENT FUNCTION? RETRIEVES the name and comment are retrieved from the HTML DOM.
         </li>
         <li>
             Both fields are checked: if they are invalid, empty, or the name is more than ten characters, a paragraph tag is updated to alert the user.
         </li>
         <li>
-            If the fields are valid, the current time is appended to the object, and a post is made to server.js.
+            If the fields are valid, the current time is appended to the object, and a /nutrition post request  is made to server.js where... the server then inserts the comment in to the commentlist database.
         </li>
     </ul>
 
@@ -93,10 +85,10 @@
             We wanted users of the website to be able to upload photos of their meals and progress.
         </li>
         <li>
-            The Multer middleware is used in server.js to upload each photo (first renaming it using the current date and time) to a local 'public/uploads/' directory.
+            Multer nodejs middleware is used for for handling multipart/form-data, which is primarily used for uploading files. It is written on top of busboy for maximum efficiency and is used in server.js to upload each photo (first renaming it using the current date and time) to a local 'public/uploads/' directory.
         </li>
         <li>
-            After upload, the image path is inserted into a Mongo database, 'imgrefs'.
+            After being uploaded, the image path is inserted into a Mongo database, 'imgrefs'.
         </li>
         <li>
             The AngularJS directive 'ng-repeat' is used to retrieve each reference in the database and display it in an image tag, resulting in a gallery of uploaded photos.
@@ -106,16 +98,25 @@
     <h2>contact.html:</h2>
     <ul>
         <li>
-            Contact form automatically sends the message as an email to an email address specified in the server. This is done by the 'Send' button which when clicked, calls a client side javascript function. This javascript function uses AJAX to make a send_mail POST request to the server which in turn uses <a href="https://nodemailer.com">Nodemailer</a> to send the email. To use Nodemailer, a reuseable transport object is created which establishes a connection with the SMTP server (GMail in our case) which can then be used to send the emails.
+            A contact form was desired so a used can fill in a form on the website and the message would be sent as an email to the business owner. There is also a checkbox for subscribing to future emails. From here the business owner could reply to each individual message and also send out marketing emails to everybody who has ticked the box in the past.
         </li>
         <li>
-            Form input is validated on the server side before sending the email.
+            On a click of the send button, the contact form calls a client side javascript function. This javascript function uses AJAX to make a send_mail POST request to the server which sends the form input as a json object. The server then validates the form input data.
         </li>
         <li>
-            If the tick box is checked, the email address used in the form is added to a database for any future marketing emails.
+            Firstly, there is a text field which is hidden with CSS. This means a user will never fill it in, however a spambot will find the input box and fill it in. If this box is filled in, the site has detetcted a spambot and will not send the email.
         </li>
         <li>
-            Spamcatcher hidden box.
+            If no spambot is detected, the server then checks that a user has filled in all of the necessary form fields, if they haven't then the email will not be sent and the server will send a response to the client 'Please fill in all fields!', which is then displayed on the form.
+        </li>
+        <li>
+            If all fields are filled in, the server validates the email address using <a href="https://www.npmjs.com/package/email-validator">email validator</a>. If this email address is not valid then the server will send a response to the client 'Email address invalid!', which is then displayed on the form.
+        </li>
+        <li>
+            If the form is filled in properly, the server then checks if the 'tick to get future emails' box was checked. If it is, then the email address is added to the emaillist database. The database is first checked to see if this email address has been entered before, and if so it is not added again (so we avoid duplicates).
+        </li>
+        <li>
+            Finally, the server use <a href="https://nodemailer.com">Nodemailer</a> to send the email. To use Nodemailer, a reuseable transport object was previouslt created which establishes a connection with the SMTP server (GMail in our case) which can then be used to send the emails.
         </li>
     </ul>
 
@@ -123,6 +124,15 @@
     <ul>
         <li>
             Mongo tutorial: <a href="http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/">cwbuecheler</a>
+        </li>
+        <li>
+            <a href="https://nodemailer.com">Nodemailer</a>
+        </li>
+        <li>
+            <a href="https://www.npmjs.com/package/email-validator">email validator</a>
+        </li>
+        <li>
+            The <a href="http://mean.io/#!/">MEAN stack</a>
         </li>
     </ul>
 </body>

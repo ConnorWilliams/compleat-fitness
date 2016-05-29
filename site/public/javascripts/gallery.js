@@ -1,3 +1,5 @@
+"use strict";
+
 var myApp = angular.module('myApp', ['angular.filter']);
 myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     console.log("Controller listening");
@@ -38,6 +40,8 @@ myApp.filter('reverse', function() {
     };
 });
 
+
+// Function to initialise the instagram section of the site.
 function instafeeder() {
     var feed = new Instafeed({
         clientId: 'e0347429fc5548d48ddb0b92cbfbfcbb',
@@ -52,6 +56,7 @@ function instafeeder() {
     feed.run();
 }
 
+// Function to run the image slider on the pictures brought from instagram.
 function runSlick() {
     $('.instafeed').slick({
         slidesToShow: 1,

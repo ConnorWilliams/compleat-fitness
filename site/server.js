@@ -1,34 +1,25 @@
 "use strict";
+// An express server using Ian's method for content negotiation.
 
-// An express-based server demonstrating content negotiation.  The built-in
-// 'static' middleware is used to deliver static files.  'Static' has an option
-// to provide a function to set custom response headers.  That function is not
-// passed the request as an argument, so you can't do content negotiation at
-// that point.  Instead, content negotiation is split into two steps.
-//
-// First, the 'negotiate' function is installed as middleware, to be called on
-// every request before 'static'.  It checks whether the browser accepts XHTML,
-// and if so adds a flag to the response object.  It is not a good idea to check
-// whether the request is for a '.html' file at that point, because the URL
-// hasn't yet been processed.  Second, the 'deliverXHTML' function is installed
-// as an option, so that 'static' calls it when it is ready to deliver the file.
-// It checks that the file is html, and checks the 'accepts XHTML' flag and, if
-// both are true, it sets the content type.
+var express = require('express');           // For the server.
+var path = require('path');                 // TODO For ROUTING??
+var nodemailer = require("nodemailer");     // For sending emails from the contact form
+var bodyParser = require('body-parser');    // For extracting fields from JSON objects/
+var validator = require("email-validator"); // For validating the email address left on the contact form.
 
-var express = require('express');
-var path = require('path');
-var nodemailer = require("nodemailer");
-var bodyParser = require('body-parser');
-var validator = require("email-validator");
 var app = express();
+app.use(express.static(path.join(__dirname, '/public'), { setHeaders: deliverXHTML }));
+app.use(bodyParser());
+app.use(negotiate);
+app.use(validate);
 
-// MongoDB integration
+// MongoDB integration variables.
 var mongojs = require('mongojs');
 var db = mongojs('commentlist', ['commentlist']);
 var db_img = mongojs('imgrefs', ['imgrefs']);
 var db_emails = mongojs('emaillist', ['emaillist']);
 
-// Multer integration
+// Multer integration variables.
 var multer = require('multer');
 var storage = multer.diskStorage({
     destination: function(req, file, callback) {
@@ -43,22 +34,19 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage: storage }).single('userPhoto');
 
-// create reusable transporter object using the default SMTP transport
+// Reusable transporter object using Google's SMTP server for sending emails.
 var transporter = nodemailer.createTransport('smtps://cojwilliams%40gmail.com:webtechisgr8@smtp.gmail.com');
 
-app.use(express.static(path.join(__dirname, '/public'), { setHeaders: deliverXHTML }));
-app.use(bodyParser());
-app.use(negotiate);
-app.use(validate);
 
-/*-------------------------*/
-/*-------- Routing --------*/
-/*-------------------------*/
 
+/*---------------------------------------*/
+/*--------------- Routing ---------------*/
+/*---------------------------------------*/
 // Homepage
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/views/index.html');
 });
+
 
 // Packages page
 app.get('/packages', function(req, res) {
@@ -72,17 +60,16 @@ app.get('/nutrition', function(req, res) {
 
 app.get('/postcomment', function(req, res) {
     db.commentlist.find(function(err, docs) {
-        console.log(docs);
         res.json(docs);
     });
 });
 
 app.post('/nutrition', function(req, res) {
-    console.log(req.body);
     db.commentlist.insert(req.body, function(err, doc) {
         res.json(doc);
     });
 });
+
 
 // Gallery Page
 app.get('/gallery', function(req, res) {
@@ -91,7 +78,6 @@ app.get('/gallery', function(req, res) {
 
 app.get('/fetchsource', function(req, res) {
     db_img.imgrefs.find(function(err, docs) {
-        console.log(docs);
         res.json(docs);
     });
 });
@@ -107,35 +93,43 @@ app.post('/gallery', function(req, res) {
     });
 });
 
+
 // Contact page
 app.get('/contact', function(req, res) {
     res.sendFile(__dirname + '/views/contact.html');
 });
 
+// Post request for sending emails through the contact form.
 app.post('/send_mail', function(req, res) {
     var send = true;
+
+    // Checks for the spamcatcher being filled in by a spam bot.
     if (req.body.spamcatcher) {
         send = false;
     }
 
+    // Check all necessary fields are filled in. If any are empty, let the client know.
     if (!req.body.firstname || !req.body.lastname || !req.body.message) {
         res.end('{"resp": "Please fill in all fields!"}');
         send = false;
     }
 
+    // Validate the email address. If invalid let the client know.
     if (!validator.validate(req.body.email)) {
         res.end('{"resp": "Email address invalid."}');
         send = false;
     }
 
+    // If everything is valid then send the email and a success message to the client.
     if (send == true) {
         var mailOptions = {
-            from: '"' + req.body.firstname + ' ' + req.body.lastname + '" ' + req.body.email, // sender address
-            to: 'connor_williams@msn.com', // list of receivers
-            subject: 'Message from ' + req.body.email, // Subject line
-            text: req.body.message, // plaintext body
+            from: '"' + req.body.firstname + ' ' + req.body.lastname + '" ' + req.body.email, // Sender address
+            to: 'connor_williams@msn.com',              // List of receivers
+            subject: 'Message from ' + req.body.email,  // Subject line
+            text: req.body.message,                     // Plaintext body, can also use HTML.
         };
 
+        // Check if they have ticked the subscribe box, if yes then add their email address to a subscriber database.
         if (req.body.subscribe == "true") {
             db_emails.emaillist.find({ emailaddr: req.body.email }).count(function(err, docs) {
                 if (docs > 0) {
@@ -147,7 +141,7 @@ app.post('/send_mail', function(req, res) {
             });
         }
 
-        // send mail with defined transport object
+        // Send email with previously defined transport object.
         transporter.sendMail(mailOptions, function(error, info) {
             if (error) {
                 return console.log(error);
@@ -162,9 +156,9 @@ app.get('/404', function(req, res) {
     res.sendFile(__dirname + '/views/404.html');
 });
 
-/*---------------------------*/
-/*-------- Functions --------*/
-/*---------------------------*/
+/*---------------------------------*/
+/*-------- Other Functions --------*/
+/*---------------------------------*/
 // Check whether the browser accepts XHTML, and record it in the response.
 function negotiate(req, res, next) {
     var accepts = req.headers.accept.split(",");
@@ -191,12 +185,12 @@ function validate(req, res, next) {
     if (valid == false) res.redirect('/404');
     next();
 }
+
 // Check whether a string starts with a prefix, or ends with a suffix.  (The
 // starts function uses a well-known efficiency trick.)
 function starts(s, x) {
     return s.lastIndexOf(x, 0) == 0;
 }
-
 function ends(s, x) {
     return s.indexOf(x, s.length - x.length) >= 0;
 }
@@ -204,7 +198,6 @@ function ends(s, x) {
 /*---------------------------*/
 /*-------- Listening --------*/
 /*---------------------------*/
-
 app.listen(8081, function() {
     console.log('Visit http://localhost:8081');
 });

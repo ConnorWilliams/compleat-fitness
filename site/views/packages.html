@@ -156,19 +156,14 @@
     <footer>
         <a href="mailto:fc13269@bristol.ac.uk">Freddie Caira</a> and <a href="mailto:cw13121@bristol.ac.uk">Connor Williams</a>
     </footer>
+</body>
 
-    <!-- Scripts -->
-    <script>
+<!-- Scripts -->
+<script>
     $(document).ready(bmiCalculate());
     $(document).ready(accordionHandler());
-    document.getElementById("weight").onchange = function() {
-        bmiCalculate()
-    };
-    document.getElementById("height").onchange = function() {
-        bmiCalculate()
-    };
-    </script>
-
-</body>
+    document.getElementById("weight").onchange=bmiCalculate;
+    document.getElementById("height").onchange=bmiCalculate;
+</script>
 
 </html>

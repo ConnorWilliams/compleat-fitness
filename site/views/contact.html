@@ -93,27 +93,27 @@
                 </div>
             </div>
             <!-- Contact Form -->
-            <form class="contact_form" action="/contactus" method="post">
+            <form class="contact_form" id="contact_form">
                 <p id="feedback"></p>
                 <input type="text" name="spamcatcher" id="spamcatcher" title="spamcatcher" style="visibility: hidden" />
                 <input type="text" name="firstname" id="firstname" placeholder="First name" title="firstname" />
                 <br/>
-                <input type="text" name="lastname" id="lastname" placeholder="Last name" title="lastname" required/>
+                <input type="text" name="lastname" id="lastname" placeholder="Last name" title="lastname" required="" />
                 <br/>
-                <input type="email" name="email" id="email" placeholder="Email Address" title="email" required/>
-                <select name="gender" id="gender" title="gender" required>
+                <input type="email" name="email" id="email" placeholder="Email Address" title="email" required="" />
+                <select name="gender" id="gender" title="gender" required="">
                     <option value="" disabled="" selected="" hidden="">Gender</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="confidential">Prefer not to say</option>
                     <option value="other">Other</option>
                 </select>
-                <textarea name="message" id="message" rows="8" cols="50" placeholder="Your message here" title="message" required></textarea>
+                <textarea name="message" id="message" rows="8" cols="50" placeholder="Your message here" title="message" required=""></textarea>
                 <br/>
                 <label>
-                    <input type="checkbox" name="subscribe" id="subscribe" checked/> Tick if you would like to receive the odd email. You can unsubscribe at any point.
+                    <input type="checkbox" name="subscribe" id="subscribe" checked="" /> Tick if you would like to receive the odd email. You can unsubscribe at any point.
                 </label>
-                <input type="button" id="sendButton" value="Send"/>
+                <input type="submit" id="sendButton" value="Send" />
             </form>
         </main>
     </div>
@@ -130,10 +130,14 @@
     <footer>
         <a href="mailto:fc13269@bristol.ac.uk">Freddie Caira</a> and <a href="mailto:cw13121@bristol.ac.uk">Connor Williams</a>
     </footer>
-</body>
 
-<script>
-    $('#sendButton').click(send_mail)
-</script>
+    <script>
+    $('#contact_form').submit(function() {
+        send_mail();
+        return false;
+    });
+    </script>
+
+</body>
 
 </html>

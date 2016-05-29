@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB" ng-app="myApp">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB" data-ng-app="myApp">
 
 <head>
     <meta charset="UTF-8" />
@@ -15,6 +15,11 @@
     <script src="javascripts/gallery.js" type="text/javascript"></script>
     <script src="javascripts/instafeed.min.js" type="text/javascript"></script>
     <script src="javascripts/slick.min.js" type="text/javascript"></script>
+
+    <script>
+    $(document).ready(instafeeder)
+    </script>
+
     <title>Compleat Fitness</title>
 </head>
 
@@ -85,36 +90,37 @@
             <form id="uploadForm" action="/gallery" method="post" enctype="multipart/form-data">
                 Select an image to upload:
                 <br/>
-                <input type="file" name="userPhoto" id="fileToUpload">
+                <label for="fileToUpload">File to upload</label>
+                <input type="file" name="userPhoto" id="fileToUpload" />
                 <br/>
-                <input type="submit" value="Upload Image" name="submit" ng-click="uploadImg()">
+                <input type="submit" value="Upload Image" name="submit" data-ng-click="uploadImg()" />
                 <p id="upload_resp"></p>
             </form>
 
             <!-- Display Photos -->
-            <div class="container" ng-controller="AppCtrl">
-                <div ng-repeat="x in imgrefs | reverse">
-                    <img ng-src="{{x.imgref}}" class="uploads" />
+            <div class="container" data-ng-controller="AppCtrl">
+                <div data-ng-repeat="x in imgrefs | reverse">
+                    <img src="#" data-ng-src="{{x.imgref}}" class="uploads" alt="No images found"/>
                 </div>
             </div>
 
-            <!--             <div class="container" ng-controller="AppCtrl">
-                <div class="row" ng-repeat="rows in imgrefs | reverse | groupBy:4">
-                    <div class="col" ng-repeat="ref in rows">
-                        <img ng-src="{{ref.imgref}}" class="uploads" />
+            <!--             <div class="container" data-ng-controller="AppCtrl">
+                <div class="row" data-ng-repeat="rows in imgrefs | reverse | groupBy:4">
+                    <div class="col" data-ng-repeat="ref in rows">
+                        <img data-ng-src="{{ref.imgref}}" class="uploads" />
                     </div>
                 </div>
             </div> -->
 
-<!--             <div class="container" ng-controller="AppCtrl">
-                <div ng-repeat="ref in imgrefs track by $index" ng-if="$index%3==0">
+            <!--             <div class="container" data-ng-controller="AppCtrl">
+                <div data-ng-repeat="ref in imgrefs track by $index" data-ng-if="$index%3==0">
                     <img src="{{imgrefs[$index].imgref}}" class="leftimg"/>
                     <img src="{{imgrefs[$index+1].imgref}}" class="centreimg"/>
                     <img src="{{imgrefs[$index+2].imgref}}" class="rightimg"/>
                 </div>
             </div> -->
 
-            <hr>
+            <hr/>
 
             <!-- Instafeed -->
             <h1>My Instagram</h1>
@@ -138,9 +144,5 @@
         <a href="mailto:fc13269@bristol.ac.uk">Freddie Caira</a> and <a href="mailto:cw13121@bristol.ac.uk">Connor Williams</a>
     </footer>
 </body>
-
-<script>
-    $(document).ready(instafeeder)
-</script>
 
 </html>

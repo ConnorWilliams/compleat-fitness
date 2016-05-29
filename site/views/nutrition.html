@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB" ng-app="myApp">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB" data-ng-app="myApp">
 
 <head>
     <meta charset="UTF-8" />
@@ -79,31 +79,32 @@
             <p>This page will be home to an Instagram slider which pulls images of food from an Instagram account along with a descripton of the dish. It will also feature a food blog where whole recipes can be posted - this feature will be added for the server side submission.</p>
 
             <!-- Comment Box -->
-            <div class="container" ng-controller="AppCtrl">
+            <div class="container" data-ng-controller="AppCtrl">
                 <h2>Share your thoughts and recipes here!</h2>
                 <p class="alert"></p>
-                <table class="commenttable">
+                <table class="commenttable" title="Comments">
                     <thead>
                         <tr>
                             <th class="th-1">Date and Time</th>
                             <th class="th-2">Name</th>
                             <th class="th-3">Comment</th>
-                            <th class="th-4">&nbsp;</th>
+                            <th class="th-4"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <td class="inputcell"></td>
-                        <td class="inputcell">
-                            <input class="form-control" ng-model="comment.username">
-                        </td>
-                        <td class="inputcell">
-                            <textarea class="form-control" ng-model="comment.usercomment"></textarea>
-                        </td>
-                        <td class="inputcell">
-                            <button class="btn" ng-click="addComment()" type="btn">Post</button>
-                        </td>
+                        <tr>
+                            <td class="inputcell"></td>
+                            <td class="inputcell">
+                                <input class="form-control" data-ng-model="comment.username" title="Name"/>
+                            </td>
+                            <td class="inputcell">
+                                <textarea class="form-control" data-ng-model="comment.usercomment" title="Comment"></textarea>
+                            </td>
+                            <td class="inputcell">
+                                <button class="btn" data-ng-click="addComment()">Post</button>
+                            </td>
                         </tr>
-                        <tr ng-repeat="comment in commentlist | reverse" class="postedcomments">
+                        <tr data-ng-repeat="comment in commentlist | reverse" class="postedcomments">
                             <td>{{comment.datetime}}</td>
                             <td>{{comment.username}}</td>
                             <td>

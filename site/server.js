@@ -12,6 +12,7 @@ app.use(express.static(path.join(__dirname, '/public'), { setHeaders: deliverXHT
 app.use(bodyParser());
 app.use(negotiate);
 app.use(validate);
+app.use(checkSafe);
 
 // MongoDB integration variables.
 var mongojs = require('mongojs');
@@ -173,16 +174,43 @@ function deliverXHTML(res, path, stat) {
     }
 }
 
-// Server side URL validation.
+// Validate the URL.  It must start with / and not contain /. or // so
+// that /../ and /./ and file or folder names starting with dot are excluded.
+// Also a final name with no extension is rejected.
 function validate(req, res, next) {
-    var url = req.originalUrl;
+    var url = req.originalUrl.toLowerCase();
+    req.originalUrl = url;
     var valid = true;
     if (ends(url, "/")) valid = true;
     if (!starts(url, "/")) valid = false;
     if (url.indexOf("//") >= 0) valid = false;
     if (url.indexOf("/.") >= 0) valid = false;
     if (ends(url, "..")) valid = false;
-    if (valid == false) res.redirect('/404');
+    if (!valid) res.redirect('/404');
+    next();
+}
+
+// Restrict the url to visible ascii characters, excluding control characters,
+// spaces, and unicode characters beyond ascii.  Such characters aren't
+// technically illegal, but (a) need to be escaped which causes confusion for
+// users and (b) can be a security risk.
+function checkSafe(req, res, next) {
+    var url = req.originalUrl;
+    var safe = true;
+    var spaceCode = 32;
+    var deleteCode = 127;
+
+    if (url.length > 1000) safe = false;
+
+    for (var i=0; i<url.length; i++) {
+        var code = url.charCodeAt(i);
+        if (code<spaceCode || code>deleteCode){
+            safe = false;
+            break;
+        }
+    }
+
+    if (!safe) res.redirect('/404');
     next();
 }
 

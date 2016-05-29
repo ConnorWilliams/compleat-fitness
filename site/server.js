@@ -1,10 +1,10 @@
 "use strict";
 // An express server using Ian's method for content negotiation.
 
-var express = require('express');           // For the server.
-var path = require('path');                 // TODO For ROUTING??
-var nodemailer = require("nodemailer");     // For sending emails from the contact form
-var bodyParser = require('body-parser');    // For extracting fields from JSON objects/
+var express = require('express'); // For the server.
+var path = require('path'); // TODO For ROUTING??
+var nodemailer = require("nodemailer"); // For sending emails from the contact form
+var bodyParser = require('body-parser'); // For extracting fields from JSON objects/
 var validator = require("email-validator"); // For validating the email address left on the contact form.
 
 var app = express();
@@ -38,8 +38,6 @@ var upload = multer({ storage: storage }).single('userPhoto');
 // Reusable transporter object using Google's SMTP server for sending emails.
 var transporter = nodemailer.createTransport('smtps://cojwilliams%40gmail.com:webtechisgr8@smtp.gmail.com');
 
-
-
 /*---------------------------------------*/
 /*--------------- Routing ---------------*/
 /*---------------------------------------*/
@@ -71,7 +69,6 @@ app.post('/nutrition', function(req, res) {
     });
 });
 
-
 // Gallery Page
 app.get('/gallery', function(req, res) {
     res.sendFile(__dirname + '/views/gallery.html');
@@ -83,17 +80,14 @@ app.get('/fetchsource', function(req, res) {
     });
 });
 
-app.post('/gallery', function(req, res) {
+app.post('/postImg', function(req, res) {
     upload(req, res, function(err) {
         if (err) {
-            console.log(err);
-            // return res.json('{"resp": "Upload failed!", "success":"false"}');
+            return res.json("Error uploading file.");
         }
-        console.log("SERVER.JS IMAGE UPLOADED");
-        // return res.json('{"resp": "Image uploaded!", "success":"true"}');
+        res.sendFile(__dirname + '/views/gallery.html');
     });
 });
-
 
 // Contact page
 app.get('/contact', function(req, res) {
@@ -125,9 +119,9 @@ app.post('/send_mail', function(req, res) {
     if (send == true) {
         var mailOptions = {
             from: '"' + req.body.firstname + ' ' + req.body.lastname + '" ' + req.body.email, // Sender address
-            to: 'connor_williams@msn.com',              // List of receivers
-            subject: 'Message from ' + req.body.email,  // Subject line
-            text: req.body.message,                     // Plaintext body, can also use HTML.
+            to: 'connor_williams@msn.com', // List of receivers
+            subject: 'Message from ' + req.body.email, // Subject line
+            text: req.body.message, // Plaintext body, can also use HTML.
         };
 
         // Check if they have ticked the subscribe box, if yes then add their email address to a subscriber database.
@@ -202,9 +196,9 @@ function checkSafe(req, res, next) {
 
     if (url.length > 1000) safe = false;
 
-    for (var i=0; i<url.length; i++) {
+    for (var i = 0; i < url.length; i++) {
         var code = url.charCodeAt(i);
-        if (code<spaceCode || code>deleteCode){
+        if (code < spaceCode || code > deleteCode) {
             safe = false;
             break;
         }
@@ -219,6 +213,7 @@ function checkSafe(req, res, next) {
 function starts(s, x) {
     return s.lastIndexOf(x, 0) == 0;
 }
+
 function ends(s, x) {
     return s.indexOf(x, s.length - x.length) >= 0;
 }

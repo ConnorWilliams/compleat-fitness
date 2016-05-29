@@ -13,23 +13,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     };
 
     refresh();
-
-    $scope.uploadImg = function() {
-        $http.post('/gallery').success(function(response) {
-            console.log(response);
-            refresh();
-            // console.log("gallery.js Image successfully uploaded");
-            // console.log("gallery.js Image upload failed!");
-            // if(response.success){
-            // } else {
-            // }
-            // refresh();
-            // $scope.upload_resp = response.resp;
-        });
-    };
-
 }]);﻿
-
 
 myApp.filter('reverse', function() {
     return function(items) {
@@ -39,7 +23,6 @@ myApp.filter('reverse', function() {
         return items.slice().reverse();
     };
 });
-
 
 // Function to initialise the instagram section of the site.
 function instafeeder() {

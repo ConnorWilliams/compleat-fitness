@@ -81,12 +81,13 @@ app.get('/fetchsource', function(req, res) {
     });
 });
 
-app.post('/postImg', function(req, res) {
+app.post('/gallery', function(req, res) {
     upload(req, res, function(err) {
         if (err) {
             return res.json("Error uploading file.");
         }
-        res.sendFile(__dirname + '/views/gallery.html');
+        return res.json("Image uploaded!");
+        // res.sendFile(__dirname + '/views/gallery.html');
     });
 });
 

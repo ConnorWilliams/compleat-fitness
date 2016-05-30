@@ -1,46 +1,58 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
+
 <head>
-    <meta charset="UTF-8"/>
-    <link rel="icon" type="image/png" href="site/public/favicon.png"/>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="site/public/images/favicon.png" />
     <link href="report.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css' />
 
     <title>Report</title>
 </head>
 
 <body>
-    <h1>Freddie Caira (fc13260) and Connor Williams (cw13121)</h1>
-    <a href="report_server.html">CLICK HERE for Server Side Report</a>
+    <h1>Freddie Caira (fc13269) and Connor Williams (cw13121)</h1>
+    <a href="report.html">CLICK HERE for Server Side Report</a>
+
+    <h1>Please read first!</h1>
+    <p>In order to run our website, please navigate into the site/ directory and run the 'start.sh' bash script. This script both intialises the Mongo database connection, and starts the server. You may need to edit the Node.js command to either 'node' or 'nodejs' depending on your operating system. Then navigate to 'localhost:8081' to view our website. <br/>We excluded any node_modules and existing data to reduce our submission size. Use 'npm install' to install our dependencies, listed in package.json.</p>
+    
     <h1>Client Side Report</h1>
-    Many Google searches have been made to try and find resources on almost everything involved with the site. Lots of useful demos were found on Stack Overflow and W3 Schools which we have taken and adapted for most of our features. All HTML pages are valid HTML 5 Polyglot.
+    <p>We made good use of Google to find resources covering virtually every element of our website. We found many useful demos on Stack Overflow and W3 Schools, which we read and adapted for certain features. All HTML pages are valid HTML 5 Polyglot, even with server side implemented, tested using <a href="https://www.totalvalidator.com/">Total Validator</a>.</p>
 
     <h2> General </h2>
     <ul>
         <li>
             Navigation bar uses only HTML and some advanced CSS. This was first taken from <a href="http://codepen.io/anon/pen/JXGNGQ" target="_blank">a codepen demo</a>, however it originally used FontAwesome for the icons. This has been adapted so it now uses custom made SVGs which were all made in Inkscape. The only exception being the <a target="_blank" href="http://www.flaticon.com/free-icon/restaurant-cutlery-circular-symbol-of-a-spoon-and-a-fork-in-a-circle_45332">cutlery icon</a>. The CSS for the nav bar now looks much tidier and the styling such as colours and positioning has been changed. This nav bar took a long time and a lot of work to perfect, but it looks good now it's done.
-        </li><li>
+        </li>
+        <li>
             The whole site has fluid design, remaining completely useable no matter what window size it is being viewed in. We have not however tested the site on mobile.
-        </li><li>
+        </li>
+        <li>
             Bitmap Graphics
             <ul>
                 <li>
                     CompleatFitness logo created from scratch using Gimp and royalty-free font 'Pecita'
-                </li><li>
+                </li>
+                <li>
                     favicon created from scratch using Gimp and royalty-free font 'Pecita'
                 </li>
             </ul>
-        </li><li>
+        </li>
+        <li>
             Vector Graphics
             <ul>
                 <li>
-                    Home Icon -  Made with Inkscape, this icon required me to draw different shapes like circles, triangles and squares. I also needed to use the Path tools a lot which enabled me to draw a shape over another shape and take the difference of the two shapes. This is the method I used to create the door opening in the house.
-                </li><li>
+                    Home Icon - Made with Inkscape, this icon required me to draw different shapes like circles, triangles and squares. I also needed to use the Path tools a lot which enabled me to draw a shape over another shape and take the difference of the two shapes. This is the method I used to create the door opening in the house.
+                </li>
+                <li>
                     Barbell Icon - This icon was made by drawing a circle within another circle and finding the difference of the two shapes to create the circle border. I then just used the rectangle shape for the bar, and used rounded rectangles for the weights.
-                </li><li>
+                </li>
+                <li>
                     Gallery Icon - This icon was made by finding the difference of two rectangles for the border. I then just used triangles and a circle for the image.
-                </li><li>
+                </li>
+                <li>
                     Contact Us Icon - This was made by finding the difference of two circles for the border. I then proceeded to draw a rounded rectangle and then overlayed two rectangles where the white cut outs are. I used the 'group items' feature on these two rectangles to make a single shape and then found the difference between this shape and teh rounded rectangle I drew earlier to create the envelope shape.
                 </li>
             </ul>
@@ -58,7 +70,8 @@
     <ul>
         <li>
             Learned to write accordion from <a href="http://inspirationalpixels.com/tutorials/creating-an-accordion-with-html-css-jquery" target="_blank">inspirationalpixels</a>. It was then styled to our needs and works very well for FAQs. The design is modular so it is very easy to add a new item in to the accordion.
-        </li><li>
+        </li>
+        <li>
             The BMI Calculator uses JavaScript to take values from weight and height sliders, it then calculates BMI, and replaces the innerHTML of a DOM to display the result. This happens on each change of sliders thanks to jQuery.
         </li>
     </ul>
@@ -66,17 +79,25 @@
     <h2>nutrition.html:</h2>
     <ul>
         <li>
-            Comment box
+            The comment box features a text input attribute for the name of the commentor and a text area input attribute for their comment. AngularJS is used to change the internal text of a paragraph tag when the user needs to be alerted of an empty field etc.
+        </li>
+        <li>
+            We used the 'white-space : pre-line' value in commentbox.css to ensure that line breaks entered in the text area were displayed once the comment had been posted. We also gave each table row a maximum height and enabled scrolling within comments for an improved aesthetic outcome.
         </li>
     </ul>
 
     <h2>gallery.html:</h2>
     <ul>
         <li>
-            Image Uploading
-        </li><li>
-            <a href="https://github.com/stevenschobert/instafeed.js" target="_blank">Instafeed</a> is used to add pictures from Instagram using only javascript. An Instagram developer account was needed to register the application before pictures could be accessed.
-        </li><li>
+            For image upload, a simple form attribute was used. The button is formatted with the signature green colour of our website, and the file input button is left unedited.
+        </li>
+        <li>
+            The images are displayed in image tags, and CSS is used to give them all a maximum height of 300px. As mentioned in the server side report, we would ideally use a slider, or a layout that would work dynamically on different screen sizes.
+        </li>
+        <li>
+            <a href="https://github.com/stevenschobert/instafeed.js" target="_blank">Instafeed</a> is used to add pictures from Instagram using only JavaScript. An Instagram developer account was needed to register the application before pictures could be accessed.
+        </li>
+        <li>
             A more difficult task was to put the Instagram pictures in to a nice image slider called <a href="https://github.com/kenwheeler/slick/" target="_blank">Slick</a>. This now works well and looks nice since the images are larger and scroll automatically.
         </li>
     </ul>
@@ -85,7 +106,8 @@
     <ul>
         <li>
             Contact form elements were looked up on W3Schools and styling from different sources searching online to see what could look good on our site.
-        </li><li>
+        </li>
+        <li>
             Google map was implemented by following the instructions taken from the Google Map API intro page.
         </li>
     </ul>
@@ -94,19 +116,26 @@
     <ul>
         <li>
             Instafeed.js: <a href="https://github.com/stevenschobert/instafeed.js">https://github.com/stevenschobert/instafeed.js</a>
-        </li><li>
+        </li>
+        <li>
             Slick: <a href="https://github.com/kenwheeler/slick/">https://github.com/kenwheeler/slick/</a>
-        </li><li>
+        </li>
+        <li>
             Nav bar: <a href="http://codepen.io/anon/pen/JXGNGQ">http://codepen.io/anon/pen/JXGNGQ</a>
-        </li><li>
+        </li>
+        <li>
             Accordion: <a href="http://inspirationalpixels.com/tutorials/creating-an-accordion-with-html-css-jquery">http://inspirationalpixels.com/tutorials/creating-an-accordion-with-html-css-jquery</a>
-        </li><li>
+        </li>
+        <li>
             Cutlery Icon: <a href="http://www.flaticon.com/free-icon/restaurant-cutlery-circular-symbol-of-a-spoon-and-a-fork-in-a-circle_45332">http://www.flaticon.com/free-icon/restaurant-cutlery-circular-symbol-of-a-spoon-and-a-fork-in-a-circle_45332</a>
-        </li><li>
+        </li>
+        <li>
             Background Image: <a href="http://www.tiffanylaryn.com/wp-content/uploads/2015/03/fitness.jpg">http://www.tiffanylaryn.com/wp-content/uploads/2015/03/fitness.jpg</a>
-        </li><li>
+        </li>
+        <li>
             Social Media Icons: <a href="https://nucleoapp.com/">https://nucleoapp.com/</a>
         </li>
     </ul>
 </body>
+
 </html>

@@ -10,24 +10,26 @@ Colour Scheme:
 */
 
 * {
-  color: #FFFFFF;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: lighter;
-  text-decoration: none;
+    color: #FFFFFF;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: lighter;
+    text-decoration: none;
 }
 
-html,body{
-  height:100%;
-  margin:0;
-  padding:30px;
-  border:0;
-  background-color: #404040;
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 30px;
+    border: 0;
+    background-color: #404040;
 }
 
-h1, h2 {
-  text-align: left;
-  text-decoration: underline;
-  margin-bottom: 0px;
+h1,
+h2 {
+    text-align: left;
+    text-decoration: underline;
+    margin-bottom: 0px;
 }
 
 h3 {
@@ -38,4 +40,9 @@ h3 {
 a {
     color: #00cc66;
     text-decoration: none;
+}
+
+p,
+li {
+    font-size: 20px;
 }

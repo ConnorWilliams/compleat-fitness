@@ -16,24 +16,7 @@ app.use(checkSafe);
 
 // MongoDB integration variables.
 var mongojs = require('mongojs');
-var db = mongojs('commentlist', ['commentlist']);
-var db_img = mongojs('imgrefs', ['imgrefs']);
 var db_emails = mongojs('emaillist', ['emaillist']);
-
-// Multer integration variables.
-var multer = require('multer');
-var storage = multer.diskStorage({
-    destination: function(req, file, callback) {
-        callback(null, './public/uploads');
-    },
-    filename: function(req, file, callback) {
-        var name = file.fieldname + '-' + Date.now() + '.jpg';
-        callback(null, name);
-        var refname = 'uploads/' + name;
-        db_img.imgrefs.insert({ imgref: refname });
-    }
-});
-var upload = multer({ storage: storage }).single('userPhoto');
 
 // Reusable transporter object using Google's SMTP server for sending emails.
 var transporter = nodemailer.createTransport('smtps://cojwilliams%40gmail.com:webtechisgr8@smtp.gmail.com');
@@ -50,45 +33,6 @@ app.get('/', function(req, res) {
 // Packages page
 app.get('/packages', function(req, res) {
     res.sendFile(__dirname + '/views/packages.html');
-});
-
-
-// Nutrition page
-app.get('/nutrition', function(req, res) {
-    res.sendFile(__dirname + '/views/nutrition.html');
-});
-
-app.get('/postcomment', function(req, res) {
-    db.commentlist.find(function(err, docs) {
-        res.json(docs);
-    });
-});
-
-app.post('/nutrition', function(req, res) {
-    db.commentlist.insert(req.body, function(err, doc) {
-        res.json(doc);
-    });
-});
-
-// Gallery Page
-app.get('/gallery', function(req, res) {
-    res.sendFile(__dirname + '/views/gallery.html');
-});
-
-app.get('/fetchsource', function(req, res) {
-    db_img.imgrefs.find(function(err, docs) {
-        res.json(docs);
-    });
-});
-
-app.post('/gallery', function(req, res) {
-    upload(req, res, function(err) {
-        if (err) {
-            return res.json("Error uploading file.");
-        }
-        return res.json("Image uploaded!");
-        // res.sendFile(__dirname + '/views/gallery.html');
-    });
 });
 
 // Contact page

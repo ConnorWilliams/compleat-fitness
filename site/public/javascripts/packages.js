@@ -1,26 +1,5 @@
 "use strict";
 
-// This function obtains the slider values from the page and uses them to calculate the BMI. Once this is calculated, a message is displayed in the HTML.
-function bmiCalculate() {
-    var weight = document.getElementById('weight').value;
-    var height = document.getElementById('height').value;
-
-    document.getElementById('weightrange').innerHTML = weight;
-    document.getElementById('heightrange').innerHTML = height;
-
-    var ans = weight / (height * height);
-    document.getElementById('result').innerHTML = 'Your BMI is: ' + Math.round(ans * 10) / 10;
-    if (ans > 25 && ans < 30) {
-        document.getElementById('class').innerHTML = 'You\'re classed as overweight.';
-    } else if (ans > 30) {
-        document.getElementById('class').innerHTML = 'You\'re classed as obese.';
-    } else if (ans < 18.5) {
-        document.getElementById('class').innerHTML = 'You\'re classed as underweight.';
-    } else {
-        document.getElementById('class').innerHTML = 'You\'re classed as normal.';
-    }
-}
-
 // Function which handles any accordion activity.
 function accordionHandler() {
     $('.accordion-section-title').click(function(e) {

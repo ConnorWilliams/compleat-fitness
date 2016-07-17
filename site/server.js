@@ -19,7 +19,7 @@ var mongojs = require('mongojs');
 var db_emails = mongojs('emaillist', ['emaillist']);
 
 // Reusable transporter object using Google's SMTP server for sending emails.
-var transporter = nodemailer.createTransport('smtps://cojwilliams%40gmail.com:webtechisgr8@smtp.gmail.com');
+var transporter = nodemailer.createTransport('smtps://cojwilliams%40gmail.com:PASSWORD@smtp.gmail.com');
 
 /*---------------------------------------*/
 /*--------------- Routing ---------------*/

@@ -1,6 +1,9 @@
 # compleat-fitness
-Compleat Fitness is a website for personal trainer Jenna Freeman. It contains all information on her fitness plans and highly nutritional recipes.
+Compleat Fitness is a website for Bristol based personal trainer Jenna Freeman.
 
+This started off as work for a university unit Web Technologies, hence some useless features - they were just implemented for higher marks in the unit. I worked on the unit with Freddie Caira.
+
+## Requirements
 * Only submit just files with extensions .html, .css, .png, .svg, .js, and possibly other formats such as .xcf linked from your report.
 
 * You should also submit a page called report.html containing a report about what you have done. The pages, including report.html, must be valid and immediately readable in a modern browser - please don't slow down marking by making me patch them up to read them.
